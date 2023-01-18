@@ -29,20 +29,7 @@ namespace WpfApp1
  
             Globals.dbContext = new FurnitureDbContext();
 
-            //// Default user
-            //User user1 = new User();
-            //user1.UserName = "Admin";
-            //user1.Password = "abcdefgA1!";
-            //user1.Email = "admin@test.com";
-            //Globals.dbContext.Users.Add(user1);
 
-            //User user2 = new User();
-            //user2.UserName = "Employee";
-            //user2.Password = "abcdefgA2@";
-            //user2.Email = "employee@test.com";
-            //Globals.dbContext.Users.Add(user2);
-
-            //Globals.dbContext.SaveChanges();
 
         }
 
