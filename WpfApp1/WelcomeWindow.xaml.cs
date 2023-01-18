@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 namespace WpfApp1
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for WelcomeWindow.xaml
     /// </summary>
     public partial class WelcomeWindow : Window
     {
@@ -25,9 +25,6 @@ namespace WpfApp1
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+      
     }
 }
