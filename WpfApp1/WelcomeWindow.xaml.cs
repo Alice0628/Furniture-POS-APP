@@ -20,16 +20,12 @@ namespace WpfApp1
     /// </summary>
     public partial class WelcomeWindow : Window
     {
-        FurnitureDbContext dbContext = new FurnitureDbContext();
-
+       
         public WelcomeWindow()
         {
             InitializeComponent();
-            Product p = new Product("chair", 12.3);
-            User u = new User("Marry");
-            dbContext.Products.Add(p);
-            dbContext.Users.Add(u);
-            dbContext.SaveChanges();
+            Globals.dbContext = new FurnitureDbContext();
+           
         }
 
     }
