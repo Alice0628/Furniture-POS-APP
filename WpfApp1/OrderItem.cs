@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WpfApp1
 {
-    public class OrderItems
+    public class OrderItem
     {
         public int OrderId { get; set; }
         public int ProductId { get;set; }

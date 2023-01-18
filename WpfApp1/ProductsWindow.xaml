@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="ProductsWindow" Height="420" Width="972">
     <Grid  VerticalAlignment="Top" Margin="0,10,0,0">
-        <ListView Name="LvToDos"  Margin="17,6,327,69" SelectionChanged="LvTodos_OnSelectionChanged" SelectionMode="Single" BorderBrush="#FF8994A7">
+        <ListView Name="LvToDos"  Margin="17,6,327,69" SelectionMode="Single" BorderBrush="#FF8994A7">
             <ListView.Resources>
                 <Style TargetType="TextBlock">
                     <Setter Property="TextWrapping" Value="Wrap"/>
@@ -28,10 +28,10 @@
         <TextBox Name="TbxName" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="738,48,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" Height="29" />
         <Label Content="Price:" HorizontalAlignment="Left" Margin="674,88,0,0" VerticalAlignment="Top" Width="69" Height="29"/>
         <TextBox Name="TbxPrice" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="738,88,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" Height="29" />
-        <Button Name="BtnAdd" Content="Add" HorizontalAlignment="Left" Margin="735,208,0,0" VerticalAlignment="Top" Width="60" Height="24" Click="BtnAdd_Click"/>
-        <Button Name="BtnDelete" IsEnabled="False" Content="Delete" HorizontalAlignment="Left" Margin="808,208,0,0" VerticalAlignment="Top" Width="60" Height="24" Click="BtnDelete_Click"/>
-        <Button Name="BtnUpdate" IsEnabled="False" Content="Update" HorizontalAlignment="Left" Margin="878,208,0,0" VerticalAlignment="Top" Width="60" Height="24" Click="BtnUpdate_Click"/>
-        <Button Name="Export" Content="Export all to file" HorizontalAlignment="Left" Margin="247,269,0,0" VerticalAlignment="Top" Height="32" Width="196" Click="Export_Click" />
+        <Button Name="BtnAdd" Content="Add" HorizontalAlignment="Left" Margin="735,208,0,0" VerticalAlignment="Top" Width="60" Height="24"/>
+        <Button Name="BtnDelete" IsEnabled="False" Content="Delete" HorizontalAlignment="Left" Margin="808,208,0,0" VerticalAlignment="Top" Width="60" Height="24"/>
+        <Button Name="BtnUpdate" IsEnabled="False" Content="Update" HorizontalAlignment="Left" Margin="878,208,0,0" VerticalAlignment="Top" Width="60" Height="24"/>
+        <Button Name="Export" Content="Export all to file" HorizontalAlignment="Left" Margin="247,269,0,0" VerticalAlignment="Top" Height="32" Width="196"/>
 
     </Grid>
 </Window>

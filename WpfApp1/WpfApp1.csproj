@@ -106,11 +106,11 @@
     <Compile Include="CheckoutWindow.xaml.cs">
       <DependentUpon>CheckoutWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Customers.cs" />
+    <Compile Include="Customer.cs" />
     <Compile Include="CustomersWindow.xaml.cs">
       <DependentUpon>CustomersWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Users.cs" />
+    <Compile Include="User.cs" />
     <Compile Include="FurnitureDbContex.cs" />
     <Compile Include="LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
@@ -119,7 +119,7 @@
       <DependentUpon>MenuWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Order.cs" />
-    <Compile Include="OrderItems.cs" />
+    <Compile Include="OrderItem.cs" />
     <Compile Include="OrdersWindow.xaml.cs">
       <DependentUpon>OrdersWindow.xaml</DependentUpon>
     </Compile>
