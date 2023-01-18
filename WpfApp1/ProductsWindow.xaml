@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="ProductsWindow" Height="420" Width="972">
     <Grid  VerticalAlignment="Top" Margin="0,10,0,0">
-        <ListView Name="LvToDos"  Margin="17,6,327,69" SelectionMode="Single" BorderBrush="#FF8994A7">
+        <ListView Name="LvProducts"  Margin="17,6,327,69" SelectionMode="Single" BorderBrush="#FF8994A7">
             <ListView.Resources>
                 <Style TargetType="TextBlock">
                     <Setter Property="TextWrapping" Value="Wrap"/>
@@ -15,10 +15,9 @@
             </ListView.Resources>
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Task" Width="350"  DisplayMemberBinding="{Binding Task}" />
-                    <GridViewColumn Header="Difficulty" Width="60" DisplayMemberBinding="{Binding Difficulty}" />
-                    <GridViewColumn Header="Due Date" Width="150" DisplayMemberBinding="{Binding DueDate, StringFormat='\d'}" />
-                    <GridViewColumn Header="Status" Width="70" DisplayMemberBinding="{Binding Status}" />
+                    <GridViewColumn Header="Name" Width="350"  DisplayMemberBinding="{Binding Name}" />
+                    <GridViewColumn Header="Price" Width="60" DisplayMemberBinding="{Binding Price}" />
+                    <GridViewColumn Header="Image" Width="150" DisplayMemberBinding="{Binding Image}" />
                 </GridView>
             </ListView.View>
         </ListView>
