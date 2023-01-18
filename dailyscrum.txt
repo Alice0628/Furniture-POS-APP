@@ -1,1 +1,25 @@
 
+2023/01/18 Xiao Zhang
+1. Done / not done since last scrum:
+- created project mockups and UML user case diagram
+- setted up initial project in github and connected to database
+- did not complete tables creation in code (code first)
+2. To do until next Scrum:
+- finish the tables creating code 
+- create the dialog for user login
+3. Need assistance / figure things out
+- find the way to create tables with ont to many and many to many relationship
+
+2023/01/18 Zinbin Guo
+1. Done / not done since last scrum:
+- created project plan
+- created database mockup
+- did not write the description yet
+2. To do until next Scrum:
+- finish the description
+- setup the initial project
+- create the custom dialog for user login
+- setup the database
+3. Need assistance / figure things out
+- find and test a library for PDF printouts
+- find out how to fetch data from URL and parse JSON
