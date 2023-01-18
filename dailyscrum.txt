@@ -3,6 +3,7 @@
 1. Done / not done since last scrum:
 - created project mockups and UML user case diagram
 - setted up initial project in github and connected to database
+- complete trello checklists for user stories
 - did not complete tables creation in code (code first)
 2. To do until next Scrum:
 - finish the tables creating code 
@@ -10,16 +11,26 @@
 3. Need assistance / figure things out
 - find the way to create tables with ont to many and many to many relationship
 
-2023/01/18 Zinbin Guo
+2023/01/18 Zibin Guo
 1. Done / not done since last scrum:
-- created project plan
-- created database mockup
-- did not write the description yet
+- created project proposal with team members
+- created local project git connect and test
+- place user stories in Trello board and create Checklist In each User Story 
 2. To do until next Scrum:
-- finish the description
 - setup the initial project
-- create the custom dialog for user login
 - setup the database
+- create the product window
 3. Need assistance / figure things out
-- find and test a library for PDF printouts
-- find out how to fetch data from URL and parse JSON
+- find out how to fetch data between three tables using LINQ
+- find out how to upload images data from window to database
+
+2023/01/18 Qichen Zhu
+1. Done since last scrum
+- Create Trello board
+- Break down the project into User Stories
+- Create checklists for user stories
+2. Plan until next Scrum
+- create user profile window
+- R/U profile from database
+3. Need assistance / figure things out
+- table constrains
