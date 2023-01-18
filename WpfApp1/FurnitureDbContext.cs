@@ -21,6 +21,7 @@ namespace WpfApp1
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+
         }
     }
 }

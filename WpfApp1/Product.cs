@@ -23,9 +23,7 @@ namespace WpfApp1
             Price = price;
         }
 
-        public virtual ICollection<OrderItem> OrderItems { get; set; }
-
-        public Product(string name, double price,string image)
+        public Product(string name,double price,string image)
         {
             Name = name;
             Price = price;
