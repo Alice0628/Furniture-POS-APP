@@ -5,11 +5,12 @@ using System.Linq;
 
 namespace WpfApp1
 {
-    public partial class FurnitureDbContex : DbContext
+    public partial class FurnitureDbContext : DbContext
     {
-        public FurnitureDbContex()
-            : base("name=FurnitureDbContex")
+        public FurnitureDbContext()
+            : base("name=FurnitureDbContext")
         {
+            Database.SetInitializer<FurnitureDbContext>(new DropCreateDatabaseIfModelChanges<FurnitureDbContext>());
         }
 
         public virtual DbSet<Product> Products { get; set; }

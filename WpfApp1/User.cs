@@ -13,5 +13,9 @@ namespace WpfApp1
         public string Password { get; set; }
         public string Email { get; set; }
 
+        public User(string userName)
+        {
+            UserName = userName;
+        }
     }
 }

@@ -111,7 +111,7 @@
       <DependentUpon>CustomersWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="User.cs" />
-    <Compile Include="FurnitureDbContex.cs" />
+    <Compile Include="FurnitureDbContext.cs" />
     <Compile Include="LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
