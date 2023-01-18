@@ -24,5 +24,7 @@ namespace WpfApp1
             Password = password;
             Email = email;
         }
+
+        public User() { }
     }
 }
