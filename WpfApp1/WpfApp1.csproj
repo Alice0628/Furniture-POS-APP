@@ -110,6 +110,7 @@
     <Compile Include="CustomersWindow.xaml.cs">
       <DependentUpon>CustomersWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Globals.cs" />
     <Compile Include="User.cs" />
     <Compile Include="FurnitureDbContext.cs" />
     <Compile Include="LoginWindow.xaml.cs">
