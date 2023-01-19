@@ -7,25 +7,37 @@
         mc:Ignorable="d"
         Title="CheckoutWindow" Height="450" Width="800">
     <Grid>
-        <Label Content="Product Code" HorizontalAlignment="Left" Height="36" Margin="544,23,0,0" VerticalAlignment="Top" Width="136" FontSize="20" FontWeight="Bold"/>
-        <TextBox HorizontalAlignment="Left" Margin="544,65,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="206" Height="38" FontSize="20"/>
-        <Label Content="Product Quantity" HorizontalAlignment="Left" Height="36" Margin="539,128,0,0" VerticalAlignment="Top" Width="215" FontSize="20" FontWeight="Bold"/>
-        <TextBox HorizontalAlignment="Left" Margin="544,165,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="206" Height="39" FontSize="20"/>
-        <Button Content="Add" HorizontalAlignment="Left" Margin="544,237,0,0" VerticalAlignment="Top" Height="38" Width="93" FontSize="20"/>
-        <Button Content="Done" HorizontalAlignment="Left" Margin="657,235,0,0" VerticalAlignment="Top" Height="38" Width="93" FontSize="20"/>
-        <ListView Margin="10,35,290,82" >
+        <Label Content="CustomerId" HorizontalAlignment="Left" Height="36" Margin="543,20,0,0" VerticalAlignment="Top" Width="136" FontSize="20" FontWeight="Bold"/>
+        <Label Content="create an account" Foreground="blue" HorizontalAlignment="Left" Height="28" Margin="665,86,0,0" VerticalAlignment="Top" Width="106" RenderTransformOrigin="0.529,-1.249"/>
+        <TextBox Name ="TbxCustomerId" HorizontalAlignment="Left" Margin="552,56,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211" Height="38" FontSize="20"/>
+        <Label Content="Product Code" HorizontalAlignment="Left" Height="36" Margin="543,104,0,0" VerticalAlignment="Top" Width="136" FontSize="20" FontWeight="Bold"/>
+        <TextBox Name ="TbxProductId" HorizontalAlignment="Left" Margin="552,140,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211" Height="38" FontSize="20"/>
+        <Label Content="Product Quantity" HorizontalAlignment="Left" Height="36" Margin="543,183,0,0" VerticalAlignment="Top" Width="215" FontSize="20" FontWeight="Bold"/>
+        <TextBox Name ="TbxQuantity"  HorizontalAlignment="Left" Margin="552,217,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211" Height="39" FontSize="20"/>
+        <Button Content="Add" Click="btnAdd_Click" HorizontalAlignment="Left" Margin="552,276,0,0" VerticalAlignment="Top" Height="31" Width="53" FontSize="20"/>
+        <Button Content="Done" Click="BtnDone_Click" HorizontalAlignment="Left" Margin="701,276,0,0" VerticalAlignment="Top" Height="31" Width="62" FontSize="20"/>
+        <Button Content="Modify" Click="btnAdd_Click" HorizontalAlignment="Left" Margin="614,276,0,0" VerticalAlignment="Top" Height="31" Width="81" FontSize="20" RenderTransformOrigin="2.339,0.468"/>
+
+        <Button Content="Export to pdf" HorizontalAlignment="Left" Margin="552,319,0,0" VerticalAlignment="Top" Height="31" Width="211" Click="btnCheckoutExport_Click" FontSize="20"/>
+
+        <ListView Name="LvCheckoutList" Margin="23,33,263,84" >
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Product Id" Width="122"/>
-                    <GridViewColumn Header="Unit price" Width="122"/>
-                    <GridViewColumn Header="Quantity" Width="122"/>
-                    <GridViewColumn Header="Price" Width="128"/>
+                    <GridViewColumn Header="Product Id" Width="122" DisplayMemberBinding="{Binding ProductId}"/>
+                    <GridViewColumn Header="Unit price" Width="122" DisplayMemberBinding="{Binding UnitPrice}"/>
+                    <GridViewColumn Header="Quantity" Width="122" DisplayMemberBinding="{Binding Quantity}"/>
+                    <GridViewColumn Header="Price" Width="128" DisplayMemberBinding="{Binding Price}" />
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button Content="Export to pdf" HorizontalAlignment="Left" Margin="540,307,0,0" VerticalAlignment="Top" Height="45" Width="206" Click="Button_Click" FontSize="20"/>
-        <Label Content="Total:  " HorizontalAlignment="Left" Height="36" Margin="360,289,0,0" VerticalAlignment="Top" Width="70" FontSize="20" FontWeight="Bold" RenderTransformOrigin="0.529,-1.249"/>
-        <Label Content="$" HorizontalAlignment="Left" Height="36" Margin="430,289,0,0" VerticalAlignment="Top" Width="70" FontSize="20" FontWeight="Bold"/>
+
+
+
+        <Label Content="Total: $" HorizontalAlignment="Center" Height="36" Margin="0,313,0,0" VerticalAlignment="Top" Width="78" FontSize="20" FontWeight="Bold" RenderTransformOrigin="0.529,-1.249"/>
+
+        <Label Name="LbTotalPrice" HorizontalAlignment="Left" Height="36" Margin="428,314,0,0" VerticalAlignment="Top" Width="70" FontSize="20" FontWeight="Bold" RenderTransformOrigin="0.529,-1.249"/>
+
+
 
     </Grid>
 </Window>

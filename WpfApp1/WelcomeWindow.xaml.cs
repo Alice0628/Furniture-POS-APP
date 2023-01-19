@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data.Entity;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -29,13 +30,14 @@ namespace WpfApp1
  
             Globals.dbContext = new FurnitureDbContext();
 
-            //User user = new User("user1", "123", "user1@gmail.com");
-            //Globals.dbContext.Users.Add(user);
+            //Product product = new Product("chair", 12.5);
+            //Globals.dbContext.Products.Add(product);
             //Globals.dbContext.SaveChanges();
 
-            Order order = new Order(1, 1, 12.5);
-            Globals.dbContext.Orders.Add(order);
+            Customer customer = new Customer("Smith", "John", "john@gmail.com", "11234567890");
+            Globals.dbContext.Customers.Add(customer);
             Globals.dbContext.SaveChanges();
+
         }
 
 

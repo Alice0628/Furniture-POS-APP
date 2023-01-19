@@ -82,6 +82,8 @@ namespace WpfApp1
             Province = province;
         }
 
+        public Customer() { } 
+
         public Customer(string lastName, string firstName, string email, string phone)
         {
             LastName = lastName;

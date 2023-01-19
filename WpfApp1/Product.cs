@@ -23,6 +23,7 @@ namespace WpfApp1
             Price = price;
         }
 
+        public Product() { }
         public Product(string name,double price,string image)
         {
             Name = name;
