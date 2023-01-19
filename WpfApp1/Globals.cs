@@ -9,5 +9,6 @@ namespace WpfApp1
     internal class Globals
     {
         static internal FurnitureDbContext dbContext;
+        static internal int userId;
     }
 }

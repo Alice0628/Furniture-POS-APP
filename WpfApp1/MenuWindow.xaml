@@ -8,12 +8,12 @@
         Title="MenuWindow" Height="450" Width="800">
     <Grid>
         <Label FontWeight="Bold" Content="Welcome" HorizontalAlignment="Left" Margin="256,39,0,0" VerticalAlignment="Top" FontSize="24" Width="144"/>
-        <Label FontWeight="Bold" Content="" HorizontalAlignment="Left" Margin="400,39,0,0" VerticalAlignment="Top" FontSize="24" Width="144"/>
-        <Button Background="AliceBlue" Content="Profile" HorizontalAlignment="Center" Margin="0,86,0,0" VerticalAlignment="Top" Height="46" Width="353" FontSize="20"/>
-        <Button Background="AliceBlue" Content="Customers" HorizontalAlignment="Center" Margin="0,154,0,0" VerticalAlignment="Top" Height="46" Width="353" FontSize="20"/>
-        <Button Background="AliceBlue" Content="Products" HorizontalAlignment="Center" Margin="0,217,0,0" VerticalAlignment="Top" Height="46" Width="353" FontSize="20"/>
-        <Button Background="AliceBlue" Content="Orders" HorizontalAlignment="Center" Margin="0,286,0,0" VerticalAlignment="Top" Height="46" Width="353" FontSize="20"/>
-        <Button Background="AliceBlue" Content="Checkout" HorizontalAlignment="Center" Margin="0,359,0,0" VerticalAlignment="Top" Height="46" Width="353" FontSize="20"/>
+        <Label Name="LbUserName" FontWeight="Bold" HorizontalAlignment="Left" Margin="400,39,0,0" VerticalAlignment="Top" FontSize="24" Width="144"/>
+        <Button Background="AliceBlue" Content="Profile" Click ="btnProfile_Click"  HorizontalAlignment="Center" Margin="0,86,0,0" VerticalAlignment="Top" Height="46" Width="353" FontSize="20"/>
+        <Button Background="AliceBlue" Content="Customers" Click="btnCustomers_Click" HorizontalAlignment="Center" Margin="0,154,0,0" VerticalAlignment="Top" Height="46" Width="353" FontSize="20"/>
+        <Button Background="AliceBlue" Content="Products" Click="btnProducts_Click" HorizontalAlignment="Center" Margin="0,217,0,0" VerticalAlignment="Top" Height="46" Width="353" FontSize="20"/>
+        <Button Background="AliceBlue" Content="Orders" Click ="btnOrder_Click" HorizontalAlignment="Center" Margin="0,286,0,0" VerticalAlignment="Top" Height="46" Width="353" FontSize="20"/>
+        <Button Background="AliceBlue" Content="Checkout" Click ="btnChecout_Click" HorizontalAlignment="Center" Margin="0,359,0,0" VerticalAlignment="Top" Height="46" Width="353" FontSize="20"/>
        
 
     </Grid>

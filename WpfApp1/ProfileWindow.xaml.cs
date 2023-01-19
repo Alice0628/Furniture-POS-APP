@@ -39,7 +39,7 @@ namespace WpfApp1
 
         public void FindCurrentUser()
         {
-            var currentUser = Globals.dbContext.Users.Where(u => u.UserId == 1).FirstOrDefault();
+            var currentUser = Globals.dbContext.Users.Where(u => u.UserId == Globals.userId).FirstOrDefault();
             if (currentUser == null) return;
 
             TbxName.Content = currentUser.UserName;

@@ -29,8 +29,21 @@ namespace WpfApp1
  
             Globals.dbContext = new FurnitureDbContext();
 
+            //User user = new User("user1", "123", "user1@gmail.com");
+            //Globals.dbContext.Users.Add(user);
+            //Globals.dbContext.SaveChanges();
 
+            Order order = new Order(1, 1, 12.5);
+            Globals.dbContext.Orders.Add(order);
+            Globals.dbContext.SaveChanges();
         }
 
+
+        private void BtnToLogin_Click(object sender, RoutedEventArgs e)
+        {
+            LoginWindow lWin = new LoginWindow();
+            lWin.Owner = this;
+            lWin.Show();
+        }
     }
 }

@@ -15,18 +15,18 @@ namespace WpfApp1
         [Required]
         public int UserId { get; set; }
 
-        private DateTime _orderDate;
-        public DateTime OrderDate
-        {
-            get
-            {
-                return _orderDate;
-            }
-            set
-            {
-                _orderDate = DateTime.Now;
-            }
-        } 
+        public DateTime OrderDate { get; set; }
+        //public DateTime OrderDate
+        //{
+        //    get
+        //    {
+        //        return _orderDate;
+        //    }
+        //    set
+        //    {
+        //        _orderDate = DateTime.Now;
+        //    }
+        //} 
        
         [Required]
         public double TotalPaied { get; set; }
@@ -36,7 +36,7 @@ namespace WpfApp1
             CustomerId = customerId;
             UserId = userId;
             TotalPaied = totalPaied;
-            OrderDate = DateTime.Now;
+            OrderDate = (DateTime)DateTime.Now;
 
         }
     }
