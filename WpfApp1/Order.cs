@@ -20,5 +20,13 @@ namespace WpfApp1
         [Required]
         public double TotalPaied { get; set; }
 
+        public Order(int customerId, int userId, double totalPaied)
+        {
+            CustomerId = customerId;
+            UserId = userId;
+            TotalPaied = totalPaied;
+            OrderDate = DateTime.Now;
+
+        }
     }
 }
