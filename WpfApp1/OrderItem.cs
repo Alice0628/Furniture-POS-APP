@@ -27,7 +27,7 @@ namespace WpfApp1
         [Required] 
         public double ProductPrice { get; set; }
 
-
+        //test
         public OrderItem(int orderId,int productId, string productName, int productQuantity, double productPrice)
         {
             OrderId = orderId;
