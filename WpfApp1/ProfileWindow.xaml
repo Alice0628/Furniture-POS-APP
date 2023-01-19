@@ -7,13 +7,14 @@
          mc:Ignorable="d" ResizeMode="NoResize" WindowStartupLocation="CenterOwner"
         Title="Profile" Height="300" Width="350">
     <Grid>
-        <Label Content="Name:" HorizontalAlignment="Left" Margin="83,68,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Right" FontSize="14" Width="77"/>
-        <Label Name="TbxName" HorizontalAlignment="Left" Margin="166,68,0,0" Padding="2,0,0,0" Content="klklsdf" VerticalAlignment="Top" Width="120" Height="26" FontFamily="Gabriola" FontSize="20"/>
+        <Label Content="Name:" HorizontalAlignment="Left" Margin="56,68,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Right" FontSize="14" Width="77"/>
+        <Label Name="TbxName" HorizontalAlignment="Left" Margin="154,68,0,0" Padding="2,0,0,0" Content="placeholder" VerticalAlignment="Top" Width="158" Height="26" FontFamily="Gabriola" FontSize="20"/>
 
-        <Label Content="Email:" HorizontalAlignment="Left" Margin="83,123,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Right" FontSize="14" Width="77"/>
-        <Label Name="TbxEmail"  HorizontalAlignment="Left" Margin="166,123,0,0" Padding="2,0,0,0" Content="df@te.com" VerticalAlignment="Top" Width="120" Height="26" FontFamily="Gabriola" FontSize="20"/>
+        <Label Content="Email:" HorizontalAlignment="Left" Margin="56,123,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Right" FontSize="14" Width="77"/>
+        <Label Name="TbxEmail"  HorizontalAlignment="Left" Margin="154,123,0,0" Padding="2,0,0,0" Content="example@test.com" VerticalAlignment="Top" Width="158" Height="26" FontFamily="Gabriola" FontSize="20"/>
 
         <Button Content="Edit Profile" HorizontalAlignment="Center" Margin="0,203,0,0" VerticalAlignment="Top" Height="24" Width="84" Click="OpenEditUserDialog_Click"/>
 
+        <Label Name="Status" Content="" HorizontalAlignment="Left" Margin="250,232,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Right" FontSize="14" Width="77"/>
     </Grid>
 </Window>

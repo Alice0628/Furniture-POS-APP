@@ -22,8 +22,29 @@ namespace WpfApp1
         public ProfileWindow()
         {
             InitializeComponent();
-            Globals.dbContext = new FurnitureDbContext();
 
+            try
+            {
+                Globals.dbContext = new FurnitureDbContext();
+
+                FindCurrentUser();
+            }
+            catch (SystemException ex)
+            {
+                MessageBox.Show(this, "Error reading from database\n" + ex.Message, "Fatal error",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+                Environment.Exit(1);
+            }
+        }
+
+        public void FindCurrentUser()
+        {
+            var currentUser = Globals.dbContext.Users.Where(u => u.UserId == 1).FirstOrDefault();
+            if (currentUser == null) return;
+
+            TbxName.Content = currentUser.UserName;
+            TbxEmail.Content = currentUser.Email;
+            var password = currentUser.Password;
         }
 
         private void OpenEditUserDialog_Click(object sender, RoutedEventArgs e)
@@ -31,6 +52,8 @@ namespace WpfApp1
             EditUserProfileDialog editUserProfileDialog = new EditUserProfileDialog();
             editUserProfileDialog.Owner = this;
             editUserProfileDialog.ShowDialog();
+
+            FindCurrentUser();
 
         }
     }

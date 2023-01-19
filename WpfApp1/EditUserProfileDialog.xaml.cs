@@ -22,11 +22,25 @@ namespace WpfApp1
         public EditUserProfileDialog()
         {
             InitializeComponent();
+            Globals.dbContext = new FurnitureDbContext();
+           
         }
 
         private void BtnConfirm_Click(object sender, RoutedEventArgs e)
         {
+            var currentUser = Globals.dbContext.Users.Where(u => u.UserId == 1).FirstOrDefault();
+            if (currentUser == null) return;
 
+            currentUser.UserName = TbxName.Text;
+            currentUser.Password = TbxPassword.Text;
+            currentUser.Email = TbxEmail.Text;
+
+            Globals.dbContext.SaveChanges();
+
+            Close();
+
+            ProfileWindow profileWindow = new ProfileWindow();
+            profileWindow.Activate();
         }
     }
 }
