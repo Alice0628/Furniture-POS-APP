@@ -7,6 +7,25 @@
         mc:Ignorable="d"
         Title="CheckoutWindow" Height="450" Width="800">
     <Grid>
-        
+        <Label Content="Product Code" HorizontalAlignment="Left" Height="36" Margin="544,23,0,0" VerticalAlignment="Top" Width="136" FontSize="20" FontWeight="Bold"/>
+        <TextBox HorizontalAlignment="Left" Margin="544,65,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="206" Height="38" FontSize="20"/>
+        <Label Content="Product Quantity" HorizontalAlignment="Left" Height="36" Margin="539,128,0,0" VerticalAlignment="Top" Width="215" FontSize="20" FontWeight="Bold"/>
+        <TextBox HorizontalAlignment="Left" Margin="544,165,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="206" Height="39" FontSize="20"/>
+        <Button Content="Add" HorizontalAlignment="Left" Margin="544,237,0,0" VerticalAlignment="Top" Height="38" Width="93" FontSize="20"/>
+        <Button Content="Done" HorizontalAlignment="Left" Margin="657,235,0,0" VerticalAlignment="Top" Height="38" Width="93" FontSize="20"/>
+        <ListView Margin="10,35,290,82" >
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Product Id" Width="122"/>
+                    <GridViewColumn Header="Unit price" Width="122"/>
+                    <GridViewColumn Header="Quantity" Width="122"/>
+                    <GridViewColumn Header="Price" Width="128"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button Content="Export to pdf" HorizontalAlignment="Left" Margin="540,307,0,0" VerticalAlignment="Top" Height="45" Width="206" Click="Button_Click" FontSize="20"/>
+        <Label Content="Total:  " HorizontalAlignment="Left" Height="36" Margin="360,289,0,0" VerticalAlignment="Top" Width="70" FontSize="20" FontWeight="Bold" RenderTransformOrigin="0.529,-1.249"/>
+        <Label Content="$" HorizontalAlignment="Left" Height="36" Margin="430,289,0,0" VerticalAlignment="Top" Width="70" FontSize="20" FontWeight="Bold"/>
+
     </Grid>
 </Window>
