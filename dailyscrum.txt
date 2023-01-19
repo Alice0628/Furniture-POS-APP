@@ -34,3 +34,37 @@
 - R/U profile from database
 3. Need assistance / figure things out
 - table constrains
+
+2023/01/19 Xiao Zhang
+1. Done / not done since last scrum:
+- added tables creation code and did test
+- added login window xaml
+- added checkout window xaml
+2. To do until next Scrum:
+- finish login functionality
+- do test for login
+3. Need assistance / figure things out
+- unit test
+
+2020/01/19 Zibin Guo
+1. Done / not done since last scrum:
+- setup the initial project
+- connect to database and create the table
+- create the product window
+2. To do until next Scrum:
+- CRUD products 
+3. Need assistance / figure things out
+- find out how to Save and Retrieve images in C# WPF Application from SQL Server Database
+
+2023/01/19 Qichen
+1. Done since last scrum
+- Create user profile window
+- Load user data from database
+- Edit user info dialog
+- Update user info
+2. Plan until next Scrum
+- Create customer profile window
+- Add customer
+- Load customer data from database
+3. Need assistance / figure things out
+- N/A
