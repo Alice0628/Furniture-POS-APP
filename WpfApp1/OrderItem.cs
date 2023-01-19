@@ -11,13 +11,16 @@ namespace WpfApp1
     public class OrderItem
     {
         public int OrderItemId { get; set; }
+       
         [Required]
-
-        
         public int OrderId { get; set; }
+        
+        [Required]
         public int ProductId { get;set; }
+        
         [Required]
         public string ProductName { get; set; }
+        
         [Required]
         public int ProductQuantity { get; set; }
 
