@@ -11,14 +11,16 @@ namespace WpfApp1
    public class Customer
     {
         public int CustomerId{ get; set; }
+
         [Required]
         [StringLength(50)]
         public string LastName { get; set; }
+
         [Required]
         [StringLength(50)]
         public string FirstName { get; set; }
-        [Required]
 
+        [Required]
         private string _email;
         public string Email {
             get
@@ -34,8 +36,8 @@ namespace WpfApp1
                 _email = value;
             }
         }
-        [Required]
 
+        [Required]
         private string _phone;
         public string Phone
         {
@@ -54,12 +56,16 @@ namespace WpfApp1
         
         [StringLength(50)]
         public string Street { get; set; }
+
         [StringLength(50)]
         public string City { get; set; }
+
         [StringLength(50)]
         public string PostalCode { get; set; }
+
         [StringLength(50)]
         public string Country { get; set; }
+
         [StringLength(50)]
         public string Province { get; set; }
 

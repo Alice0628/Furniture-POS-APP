@@ -15,7 +15,18 @@ namespace WpfApp1
         [Required]
         public int UserId { get; set; }
 
-        public DateTime OrderDate = DateTime.Now;
+        private DateTime _orderDate;
+        public DateTime OrderDate
+        {
+            get
+            {
+                return _orderDate;
+            }
+            set
+            {
+                _orderDate = DateTime.Now;
+            }
+        } 
        
         [Required]
         public double TotalPaied { get; set; }

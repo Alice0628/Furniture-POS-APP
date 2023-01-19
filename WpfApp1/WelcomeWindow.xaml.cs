@@ -30,7 +30,6 @@ namespace WpfApp1
             Globals.dbContext = new FurnitureDbContext();
 
 
-
         }
 
     }
