@@ -54,7 +54,6 @@ namespace WpfApp1
             editUserProfileDialog.ShowDialog();
 
             FindCurrentUser();
-
         }
     }
 }
