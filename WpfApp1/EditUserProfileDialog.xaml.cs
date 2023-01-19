@@ -15,22 +15,17 @@ using System.Windows.Shapes;
 namespace WpfApp1
 {
     /// <summary>
-    /// Interaction logic for ProfileWindow.xaml
+    /// Interaction logic for EditUserProfileDialog.xaml
     /// </summary>
-    public partial class ProfileWindow : Window
+    public partial class EditUserProfileDialog : Window
     {
-        public ProfileWindow()
+        public EditUserProfileDialog()
         {
             InitializeComponent();
-            Globals.dbContext = new FurnitureDbContext();
-
         }
 
-        private void OpenEditUserDialog_Click(object sender, RoutedEventArgs e)
+        private void BtnConfirm_Click(object sender, RoutedEventArgs e)
         {
-            EditUserProfileDialog editUserProfileDialog = new EditUserProfileDialog();
-            editUserProfileDialog.Owner = this;
-            editUserProfileDialog.ShowDialog();
 
         }
     }
