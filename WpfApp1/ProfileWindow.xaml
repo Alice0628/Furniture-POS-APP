@@ -15,7 +15,7 @@
         <Label Content="Email:" HorizontalAlignment="Left" Margin="64,121,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Right" FontSize="14" Width="77"/>
         <Label Name="TbxEmail"  HorizontalAlignment="Left" Margin="162,121,0,0" Padding="2,0,0,0" Content="example@test.com" VerticalAlignment="Top" Width="158" Height="26" FontFamily="Gabriola" FontSize="20"/>
 
-        <Button Content="Edit Profile" HorizontalAlignment="Center" Margin="0,190,0,0" VerticalAlignment="Top" Height="24" Width="84" Click="OpenEditUserDialog_Click" RenderTransformOrigin="0.531,-0.406"/>
+        <Button Content="Edit Profile" HorizontalAlignment="Center" Margin="0,190,0,0" VerticalAlignment="Top" Height="24" Width="84" Click="OpenEditUserDialog_Click"/>
 
     </Grid>
 </Window>

@@ -23,7 +23,7 @@ namespace WpfApp1
         {
             InitializeComponent();
             Globals.dbContext = new FurnitureDbContext();
-           
+
         }
 
         private void BtnConfirm_Click(object sender, RoutedEventArgs e)
@@ -32,15 +32,19 @@ namespace WpfApp1
             if (currentUser == null) return;
 
             currentUser.UserName = TbxName.Text;
-            currentUser.Password = TbxPassword.Text;
             currentUser.Email = TbxEmail.Text;
 
-            Globals.dbContext.SaveChanges();
+            if (TbxPassword.Text != currentUser.Password)
+            {
+                MessageBox.Show("Please check your password", "Error", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
+            {
+                Globals.dbContext.SaveChanges();
+                Close();
+            }
 
-            Close();
 
-            ProfileWindow profileWindow = new ProfileWindow();
-            profileWindow.Activate();
         }
     }
 }
