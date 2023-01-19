@@ -4,9 +4,58 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
-        mc:Ignorable="d"
-        Title="CustomerWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        mc:Ignorable="d" ResizeMode="NoResize"
+        Title="Customer List"  Height="400" Width="800">
+    <DockPanel>
+
+        <StatusBar DockPanel.Dock="Bottom">
+            <StatusBarItem>
+                <TextBlock Name="Status">Welcome!</TextBlock>
+            </StatusBarItem>
+        </StatusBar>
+
+        <Button Name="BtnSaveToFile" Content="Save Selected..." IsEnabled="{Binding SelectedItems.Count, ElementName=LvItems}" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20,20,0,0" Width="150" Height="25"/>
+        <ListView Name="LvItems" SelectionMode="Multiple" VerticalAlignment="Top" Margin="-150,60,0,0" Height="220">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Name" Width="80" DisplayMemberBinding="{Binding Name}" />
+                    <GridViewColumn Header="Phone" Width="80" DisplayMemberBinding="{Binding Phone}" />
+                    <GridViewColumn Header="Email" Width="100" DisplayMemberBinding="{Binding Email}" />
+                    <GridViewColumn Header="Address" Width="150" DisplayMemberBinding="{Binding Address}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <Grid Width="330" VerticalAlignment="Top" Margin="-10,60,0,0" Height="220">
+            <Label Content="First Name:" HorizontalAlignment="Left" Margin="10,5,0,0" VerticalAlignment="Top" Width="70" />
+            <TextBox Name="TbxFirstName" HorizontalAlignment="Left" Margin="85,5,0,0" TextWrapping="Wrap" Padding="3,3,0,0" VerticalAlignment="Top" Width="75" Height="26"/>
+            <Label Content="Last Name:" HorizontalAlignment="Left" Margin="165,5,0,0" VerticalAlignment="Top" Width="70" />
+            <TextBox x:Name="TbxLastName" HorizontalAlignment="Left" Margin="245,5,0,0" TextWrapping="Wrap" Text="" Padding="3,3,0,0" VerticalAlignment="Top" Width="75" Height="26"/>
+
+            <Label Content="Email:" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top" Width="70" />
+            <TextBox Name="TbxEmail" HorizontalAlignment="Left" Margin="85,40,0,0" TextWrapping="Wrap" Text="" Padding="3,3,0,0" VerticalAlignment="Top" Width="75" Height="26"/>
+            <Label Content="Phone:" HorizontalAlignment="Left" Margin="165,40,0,0" VerticalAlignment="Top" Width="70" />
+            <TextBox Name="TbxPhone" HorizontalAlignment="Left" Margin="245,40,0,0" TextWrapping="Wrap" Text="" Padding="3,3,0,0" VerticalAlignment="Top" Width="75" Height="26"/>
+
+            <Label Content="Street:" HorizontalAlignment="Left" Margin="10,75,0,0" VerticalAlignment="Top" Width="70" />
+            <TextBox Name="TbxStreet" HorizontalAlignment="Left" Margin="85,75,0,0" TextWrapping="Wrap" Text="" Padding="3,3,0,0" VerticalAlignment="Top" Width="235" Height="26"/>
+
+            <Label Content="City:" HorizontalAlignment="Left" Margin="10,110,0,0" VerticalAlignment="Top" Width="70" />
+            <TextBox Name="TbxCity" HorizontalAlignment="Left" Margin="85,110,0,0" TextWrapping="Wrap" Text="" Padding="3,3,0,0" VerticalAlignment="Top" Width="75" Height="26"/>
+            <Label Content="Postal Code:" HorizontalAlignment="Left" Margin="165,110,0,0" VerticalAlignment="Top" Width="75"/>
+            <TextBox Name="TbxPostalCode" HorizontalAlignment="Left" Margin="245,110,0,0" TextWrapping="Wrap" Text="" Padding="3,3,0,0" VerticalAlignment="Top" Width="75" Height="26"/>
+
+            <Label Content="Province:" HorizontalAlignment="Left" Margin="10,145,0,0" VerticalAlignment="Top" Width="70" />
+            <TextBox Name="TbxProvince" HorizontalAlignment="Left" Margin="85,145,0,0" TextWrapping="Wrap" Text="" Padding="3,3,0,0" VerticalAlignment="Top" Width="75" Height="26"/>
+            <Label Content="Country:" HorizontalAlignment="Left" Margin="165,145,0,0" VerticalAlignment="Top" Width="70" />
+            <TextBox Name="TbxCountry" HorizontalAlignment="Left" Margin="245,145,0,0" TextWrapping="Wrap" Text="" Padding="3,3,0,0" VerticalAlignment="Top" Width="75" Height="26"/>
+
+
+            <Button Name="BtnAdd" Content="Add" HorizontalAlignment="Left" Margin="45,185,0,0" VerticalAlignment="Top" Width="70" Height="30"/>
+            <Button Name="BtnUpdate" Content="Update" IsEnabled="{Binding SelectedItems.Count, ElementName=LvItems}" HorizontalAlignment="Center" Margin="0,185,0,0" VerticalAlignment="Top" Width="70" Height="30" />
+            <Button Name="BtnDelete" Content="Delete" IsEnabled="{Binding SelectedItems.Count, ElementName=LvItems}"  HorizontalAlignment="Right" Margin="0,185,45,5" Width="70" Height="30" />
+
+        </Grid>
+
+    </DockPanel>
 </Window>
