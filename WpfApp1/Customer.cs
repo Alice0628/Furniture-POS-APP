@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Data.Entity.Core.Metadata.Edm;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -19,6 +20,7 @@ namespace WpfApp1
         [Required]
         [StringLength(50)]
         public string FirstName { get; set; }
+
 
         [Required]
         private string _email;
@@ -69,6 +71,8 @@ namespace WpfApp1
         [StringLength(50)]
         public string Province { get; set; }
 
+
+        public Customer() { }
         public Customer(string lastName, string firstName, string email, string phone, string street, string city, string postalCode, string country, string province)
         {
             LastName = lastName;

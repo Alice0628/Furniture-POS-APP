@@ -112,6 +112,7 @@
       <DependentUpon>CheckoutWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Customer.cs" />
+    <Compile Include="CustomerConverter.cs" />
     <Compile Include="CustomersWindow.xaml.cs">
       <DependentUpon>CustomersWindow.xaml</DependentUpon>
     </Compile>
