@@ -68,3 +68,34 @@
 - Load customer data from database
 3. Need assistance / figure things out
 - N/A
+
+2023/01/20 Zhang Xiao
+1. Done / not done since last scrum:
+- finish welcome and menu window buttons functions
+- finish login functionality
+- complete add, update functions in CheckoutWindow
+2. To do until next Scrum:
+- delete item in CheckoutWindow
+- pdf export 
+3. Need assistance / figure things out
+- pdf export
+
+2020/01/20 Zibin Guo
+1. Done / not done since last scrum:
+- find out how to save and retrieve images data from SQL Server using Entity Framework
+2. To do until next Scrum:
+- CRUD products
+3. Need assistance / figure things out
+- find out how to Save and Retrieve images in C# WPF Application from SQL Server Database
+
+2020/01/20 Qichen Zhu
+1. Done since last scrum
+- Create customer profile window
+- Add customer
+- Load customer data from database
+2. Plan until next Scrum
+- Update customer
+- Delete customer
+- Customer listview showing fullname(firstname+lastname)
+3. Need assistance / figure things out
+- N/A
