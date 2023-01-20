@@ -9,6 +9,8 @@ namespace WpfApp1
     internal class CheckoutItemList
     {
         public int ProductId { get; set; }
+
+        public string ProductName { get; set; }
         public double UnitPrice { get; set; }
         public int Quantity { get; set; }
 
@@ -16,9 +18,10 @@ namespace WpfApp1
 
         public CheckoutItemList() {  }
 
-        public CheckoutItemList (int id, double uPrice, int quantity)
+        public CheckoutItemList (int id,string name, double uPrice, int quantity)
         {
             ProductId = id;
+            ProductName = name;
             UnitPrice = uPrice;
             Quantity = quantity;
             Price = UnitPrice * Quantity;
