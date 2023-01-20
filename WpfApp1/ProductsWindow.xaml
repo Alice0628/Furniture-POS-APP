@@ -5,32 +5,50 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="ProductsWindow" Height="420" Width="972">
-    <Grid  VerticalAlignment="Top" Margin="0,10,0,0">
-        <ListView Name="LvProducts"  Margin="17,6,327,69" SelectionMode="Single" BorderBrush="#FF8994A7">
-            <ListView.Resources>
-                <Style TargetType="TextBlock">
-                    <Setter Property="TextWrapping" Value="Wrap"/>
-                </Style>
-            </ListView.Resources>
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Name" Width="350"  DisplayMemberBinding="{Binding Name}" />
-                    <GridViewColumn Header="Price" Width="60" DisplayMemberBinding="{Binding Price}" />
-                    <GridViewColumn Header="Image" Width="150" DisplayMemberBinding="{Binding Image}" />
-                </GridView>
-            </ListView.View>
-        </ListView>
-        <Label Content="Image:" HorizontalAlignment="Left" Margin="674,8,0,0" VerticalAlignment="Top" Width="69" Height="29"/>
-        <TextBox Name="TbxImage" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="738,8,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" Height="29" />
-        <Label Content="Name:" HorizontalAlignment="Left" Margin="674,48,0,0" VerticalAlignment="Top" Width="69" Height="29"/>
-        <TextBox Name="TbxName" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="738,48,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" Height="29" />
-        <Label Content="Price:" HorizontalAlignment="Left" Margin="674,88,0,0" VerticalAlignment="Top" Width="69" Height="29"/>
-        <TextBox Name="TbxPrice" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="738,88,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" Height="29" />
-        <Button Name="BtnAdd" Content="Add" HorizontalAlignment="Left" Margin="735,208,0,0" VerticalAlignment="Top" Width="60" Height="24"/>
-        <Button Name="BtnDelete" IsEnabled="False" Content="Delete" HorizontalAlignment="Left" Margin="808,208,0,0" VerticalAlignment="Top" Width="60" Height="24"/>
-        <Button Name="BtnUpdate" IsEnabled="False" Content="Update" HorizontalAlignment="Left" Margin="878,208,0,0" VerticalAlignment="Top" Width="60" Height="24"/>
-        <Button Name="Export" Content="Export all to file" HorizontalAlignment="Left" Margin="247,269,0,0" VerticalAlignment="Top" Height="32" Width="196"/>
+        Title="ProductsWindow" Height="450" Width="972">
+    <Window.Resources>
+        <Style TargetType="{x:Type GridViewColumnHeader}">
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="Padding" Value="6,0,0,0"/>
+        </Style>
+    </Window.Resources>
+    <DockPanel>
+        <StatusBar DockPanel.Dock="Bottom">
+            <StatusBarItem>
+                <TextBlock Name="Status">Welcome!</TextBlock>
+            </StatusBarItem>
+        </StatusBar>
+        <Grid Margin="0,10,0,0" Height="365">
+            <Button Name="BtnSaveToFile" Content="Save Selected..." IsEnabled="{Binding SelectedItems.Count, ElementName=LvCustomers}" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20,20,0,0" Width="150" Height="25" Click="BtnSaveToFile_Click"/>
+            <ListView Name="LvProducts"  Margin="17,62,616,23" BorderBrush="#FF8994A7"  SelectionChanged="LvProducts_SelectionChanged" SelectionMode="Multiple">
+                <ListView.Resources>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="TextWrapping" Value="Wrap"/>
+                    </Style>
+                </ListView.Resources>
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="ProductId" Width="80"  DisplayMemberBinding="{Binding Id}" />
+                        <GridViewColumn Header="Name" Width="80"  DisplayMemberBinding="{Binding Name}" />
+                        <GridViewColumn Header="Price" Width="80" DisplayMemberBinding="{Binding Price}" />
+                        <GridViewColumn Header="Quantity" Width="100" DisplayMemberBinding="{Binding Quantity}" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
 
-    </Grid>
+            <Label Content="Name:" HorizontalAlignment="Left" Margin="374,70,0,0" VerticalAlignment="Top" Width="69" Height="29"/>
+            <TextBox Name="TbxName" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="438,70,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" Height="29" />
+            <Label Content="Price:" HorizontalAlignment="Left" Margin="374,120,0,0" VerticalAlignment="Top" Width="69" Height="29"/>
+            <TextBox Name="TbxPrice" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="438,120,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" Height="29" />
+            <Label Content="Quantity:" HorizontalAlignment="Left" Margin="374,170,0,0" VerticalAlignment="Top" Width="69" Height="29"/>
+            <TextBox Name="TbxQuantity" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="438,170,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" Height="29" />
+            <Label Content="Image:" HorizontalAlignment="Left" Margin="374,220,0,0" VerticalAlignment="Top" Width="69" Height="29"/>
+            <Button Name="BtnAddImage" Content="Browse..." HorizontalAlignment="Left" Margin="438,220,0,0" VerticalAlignment="Top" Width="200" Height="24" Click="BtnAddImage_Click"/>
+            <Button Name="BtnAdd" Content="Add" HorizontalAlignment="Left" Margin="435,270,0,0" VerticalAlignment="Top" Width="60" Height="24" Click="BtnAdd_Click"/>
+            <Button Name="BtnUpdate" IsEnabled="False" Content="Update" HorizontalAlignment="Left" Margin="508,270,0,0" VerticalAlignment="Top" Width="60" Height="24" Click="BtnUpdate_Click"/>
+            <Button Name="BtnDelete" IsEnabled="False" Content="Delete" HorizontalAlignment="Left" Margin="578,270,0,0" VerticalAlignment="Top" Width="60" Height="24" Click="BtnDelete_Click"/>
+            <Label Name="LblImage" Visibility="Hidden"  Content="Image Preview:" HorizontalAlignment="Left" Margin="682,70,0,0" VerticalAlignment="Top" Width="151" Height="29"/>
+            <Image Name="ImageBox" HorizontalAlignment="Left" Height="230" Margin="682,104,0,0" VerticalAlignment="Top" Width="256" Tag="color.red"/>
+        </Grid>
+    </DockPanel>
 </Window>
