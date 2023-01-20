@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
@@ -21,17 +22,16 @@ namespace WpfApp1
     /// <summary>
     /// Interaction logic for CustomerWindow.xaml
     /// </summary>
-    
+
     public partial class CustomerWindow : Window
     {
-        List<CustomerConverter> list = new List<CustomerConverter>();
         public CustomerWindow()
         {
             InitializeComponent();
             try
             {
                 Globals.dbContext = new FurnitureDbContext();
-                LvCustomers.ItemsSource = list;
+                LvCustomers.ItemsSource = Globals.dbContext.Customers.ToList();
             }
             catch (SystemException ex)
             {
@@ -57,31 +57,25 @@ namespace WpfApp1
             try
             {
                 // database
-                string firstname = TbxFirstName.Text;
-                string lastname = TbxLastName.Text;
+                string fullName = TbxFirstName.Text + "," + TbxLastName.Text;
                 string email = TbxEmail.Text;
                 string phone = TbxPhone.Text;
-                string street = TbxStreet.Text;
-                string city = TbxCity.Text;
-                string province = TbxProvince.Text;
-                string postalcode = TbxPostalCode.Text;
-                string country = TbxCountry.Text;
+                string fullAddress;
+                if (TbxStreet.Text == "")
+                {
+                    fullAddress = null;
+                }
+                else
+                {
+                    fullAddress = TbxStreet.Text + "," + TbxCity.Text + "," + TbxProvince.Text + "," + TbxPostalCode.Text + "," + TbxCountry.Text;
+                }
 
-                Customer customer = new Customer(lastname, firstname, email, phone, street, city, postalcode, country, province);
+                Customer customer = new Customer(fullName, email, phone, fullAddress);
                 Globals.dbContext.Customers.Add(customer);
                 Globals.dbContext.SaveChanges();
 
-                // converter
-                CustomerConverter c = new CustomerConverter();
-                c.FullName = firstname + " " + lastname;
-                c.FullAddress = street + ", " + city + " " + province + " " + postalcode + ", " + country;
-                c.Email = email;
-                c.Phone = phone;
-                list.Add(c);
-
-                LvCustomers.Items.Refresh();
+                LvCustomers.ItemsSource = Globals.dbContext.Customers.ToList();
                 LvCustomers.SelectedIndex = -1;
-
                 Status.Text = "Added Successfully.";
                 ResetFileds();
             }
@@ -95,24 +89,147 @@ namespace WpfApp1
             }
         }
 
+        private void LvCustomers_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Customer selectedCustomer = (Customer)LvCustomers.SelectedItem;
+            if (selectedCustomer == null)
+            {
+                Status.Text = "Customer Unselected";
+                ResetFileds();
+            }
+            else
+            {
+                // separate Full Name
+                string fullName = selectedCustomer.FullName;
+                string[] nameData = fullName.Split(',');
+                if (nameData.Length != 2)
+                {
+                    TbxFirstName.Text = nameData[0];
+                    TbxLastName.Text = null;
+                }
+                else
+                {
+                    TbxFirstName.Text = nameData[0];
+                    TbxLastName.Text = nameData[1];
+                }
+
+                TbxEmail.Text = selectedCustomer.Email;
+                TbxPhone.Text = selectedCustomer.Phone;
+
+                // separate Full Address
+                string fullAddress = selectedCustomer.FullAddress;
+                if (fullAddress == null)
+                {
+                    TbxStreet.Text = null;
+                    TbxCity.Text = null;
+                    TbxProvince.Text = null;
+                    TbxPostalCode.Text = null;
+                    TbxCountry.Text = null;
+                }
+                else
+                {
+                    string[] addressData = fullAddress.Split(',');
+                    TbxStreet.Text = addressData[0];
+                    TbxCity.Text = addressData[1];
+                    TbxProvince.Text = addressData[2];
+                    TbxPostalCode.Text = addressData[3];
+                    TbxCountry.Text = addressData[4];
+                }
+                Status.Text = "Customer Selected";
+            }
+        }
+
         private void BtnUpdate_Click(object sender, RoutedEventArgs e)
         {
+            Customer selectedCustomer = (Customer)LvCustomers.SelectedItem;
+            if (selectedCustomer == null) return;
 
+            try
+            {
+                int id = selectedCustomer.CustomerId;
+                var item = Globals.dbContext.Customers.Find(id);
+                if (item == null)
+                {
+                    MessageBox.Show(this, "Not Found", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                selectedCustomer.FullName = TbxFirstName.Text + "," + TbxLastName.Text;
+                selectedCustomer.Email = TbxEmail.Text;
+                selectedCustomer.Phone = TbxPhone.Text;
+                if (TbxStreet.Text == "")
+                {
+                    selectedCustomer.FullAddress = null;
+                }
+                else
+                {
+                    selectedCustomer.FullAddress = TbxStreet.Text + "," + TbxCity.Text + "," + TbxProvince.Text + "," + TbxPostalCode.Text + "," + TbxCountry.Text;
+                }
+                Globals.dbContext.SaveChanges();
+
+                LvCustomers.ItemsSource = Globals.dbContext.Customers.ToList();
+                LvCustomers.SelectedIndex = -1;
+                Status.Text = "Updated Successfully.";
+                ResetFileds();
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show(this, "Error: " + ex.Message, "Input Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            catch (SystemException ex)
+            {
+                MessageBox.Show(this, "Error: " + ex.Message, "System Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
+            var selectedCustomer = LvCustomers.SelectedItems;
+            if (selectedCustomer == null) return;
 
-        }
+            var result = MessageBox.Show(this, "Are you sure to delete?\n", "Confirm", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (result == MessageBoxResult.No) return;
 
-        private void LvCustomers_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
+            foreach (Customer c in selectedCustomer)
+            {
+                Globals.dbContext.Customers.Remove(c);
+            }
+            Globals.dbContext.SaveChanges();
 
+            LvCustomers.ItemsSource = Globals.dbContext.Customers.ToList();
+            LvCustomers.SelectedIndex = -1;
+            Status.Text = "Deleted Successfully.";
+            ResetFileds();
         }
 
         public void SaveToFile()
         {
+            try
+            {
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.Filter = "Data files (*.data)|*.data|Text files (*.txt)|*.txt|All files (*.*)|*.*";
+                saveFileDialog.FilterIndex = 1;
+                saveFileDialog.InitialDirectory = Directory.GetCurrentDirectory();
 
+                if (saveFileDialog.ShowDialog() == true)
+                {
+                    List<string> data = new List<string>();
+                    var customerList = LvCustomers.SelectedItems;
+                    foreach (Customer c in customerList)
+                    {
+                        data.Add($"{c.FullName};{c.Email};{c.Phone};{c.FullAddress}");
+                    }
+                    File.WriteAllLines(saveFileDialog.FileName, data);
+                    Status.Text = "Save Successfully";
+                }
+                else
+                {
+                    Status.Text = "Save Failed";
+                    return;
+                }
+            }
+            catch (SystemException ex)
+            {
+                MessageBox.Show("System error: " + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void BtnSaveToFile_Click(object sender, RoutedEventArgs e)
@@ -122,20 +239,7 @@ namespace WpfApp1
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            Globals.dbContext = new FurnitureDbContext();
-            var customerList = Globals.dbContext.Customers.ToList();
 
-            foreach ( var customer in customerList )
-            {
-                CustomerConverter c = new CustomerConverter();
-                c.FullName = customer.FirstName + " " + customer.LastName;
-                c.Email = customer.Email;
-                c.Phone = customer.Phone;
-                c.FullAddress = customer.Street + ", " + customer.City + " " + customer.Province + " " + customer.PostalCode + ", " + customer.Country;
-                list.Add(c);
-            }
-            LvCustomers.Items.Refresh();
-            LvCustomers.SelectedIndex = -1;
         }
     }
 }
