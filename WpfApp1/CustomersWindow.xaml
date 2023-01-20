@@ -4,9 +4,15 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
-        mc:Ignorable="d" ResizeMode="NoResize"
-        Title="Customer List"  Height="400" Width="800">
-
+        mc:Ignorable="d" ResizeMode="NoResize" Loaded="Window_Loaded"
+        Title="Customer List"  Height="400" Width="820">
+    <Window.Resources>
+        <Style TargetType="{x:Type GridViewColumnHeader}">
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="Padding" Value="6,0,0,0"/>
+        </Style>
+    </Window.Resources>
+    
     <DockPanel>
         <StatusBar DockPanel.Dock="Bottom">
             <StatusBarItem>
@@ -15,18 +21,18 @@
         </StatusBar>
 
         <Button Name="BtnSaveToFile" Content="Save Selected..." IsEnabled="{Binding SelectedItems.Count, ElementName=LvCustomers}" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20,20,0,0" Width="150" Height="25" Click="BtnSaveToFile_Click"/>
-        <ListView Name="LvCustomers" SelectionMode="Multiple" VerticalAlignment="Top" Margin="-150,60,0,0" Height="240" SelectionChanged="LvCustomers_SelectionChanged">
+        <ListView Name="LvCustomers" SelectionMode="Extended" VerticalAlignment="Top" Margin="-150,60,10,0" Height="240" Width="450" SelectionChanged="LvCustomers_SelectionChanged">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Name" Width="80" DisplayMemberBinding="{Binding FullName}" />
                     <GridViewColumn Header="Phone" Width="90" DisplayMemberBinding="{Binding Phone}" />
                     <GridViewColumn Header="Email" Width="110" DisplayMemberBinding="{Binding Email}" />
-                    <GridViewColumn Header="Address" Width="150" DisplayMemberBinding="{Binding FullAddress}" />
+                    <GridViewColumn Header="Address" DisplayMemberBinding="{Binding FullAddress}" />
                 </GridView>
             </ListView.View>
         </ListView>
 
-        <Grid Width="330" VerticalAlignment="Top" Margin="-10,60,0,0" Height="240">
+        <Grid Width="340" VerticalAlignment="Top" Margin="-10,60,0,0" Height="240">
             <Label Content="First Name:" HorizontalAlignment="Left" Margin="10,5,0,0" VerticalAlignment="Top" Width="70" />
             <TextBox Name="TbxFirstName" HorizontalAlignment="Left" Margin="85,5,0,0" Padding="3,3,0,0" VerticalAlignment="Top" Width="75" Height="26"/>
             <Label Content="Last Name:" HorizontalAlignment="Left" Margin="165,5,0,0" VerticalAlignment="Top" Width="70" />
