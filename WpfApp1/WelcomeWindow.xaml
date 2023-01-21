@@ -3,12 +3,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WpfApp1"
-        mc:Ignorable="d" Background="AntiqueWhite"
+        xmlns:local="clr-namespace:WpfApp1" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
         Title="WelcomeWindow" Height="450" Width="800">
     <Grid>
-        <Label FontWeight="Bold" Content="Welcome to ZGZ Furniture store Management Application!" HorizontalAlignment="Left" Margin="32,74,0,0" VerticalAlignment="Top" Width="716" FontSize="25"/>
-        <Button Background="AliceBlue" Content="Login" HorizontalAlignment="Left" Margin="344,198,0,0" VerticalAlignment="Top" FontSize="20" Click="BtnToLogin_Click"/>
-
+        <Image Source="/WpfApp1;component/Image/cover.png"  />
+        <TextBlock TextWrapping="WrapWithOverflow" FontWeight="Bold" Text="Welcome to ZGZ Furniture store Management Application!" FontSize="25" RenderTransformOrigin="0.494,1.172" Margin="50,163,14,128" Grid.ColumnSpan="2"/>
+        <Button Background="AliceBlue" Content="Login" FontSize="20" Click="BtnToLogin_Click" Margin="83,346,134,50" Grid.Column="1" />
     </Grid>
 </Window>
