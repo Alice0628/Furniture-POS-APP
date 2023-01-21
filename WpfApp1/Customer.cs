@@ -14,13 +14,8 @@ namespace WpfApp1
         public int CustomerId{ get; set; }
 
         [Required]
-        [StringLength(50)]
-        public string LastName { get; set; }
-
-        [Required]
-        [StringLength(50)]
-        public string FirstName { get; set; }
-
+        [StringLength(100)]
+        public string FullName { get; set; }
 
         [Required]
         private string _email;
@@ -56,40 +51,22 @@ namespace WpfApp1
             }
         }
         
-        [StringLength(50)]
-        public string Street { get; set; }
-
-        [StringLength(50)]
-        public string City { get; set; }
-
-        [StringLength(50)]
-        public string PostalCode { get; set; }
-
-        [StringLength(50)]
-        public string Country { get; set; }
-
-        [StringLength(50)]
-        public string Province { get; set; }
+        [StringLength(100)]
+        public string FullAddress { get; set; }
 
 
         public Customer() { }
-        public Customer(string lastName, string firstName, string email, string phone, string street, string city, string postalCode, string country, string province)
+        public Customer(string fullName, string email, string phone, string fullAddress)
         {
-            LastName = lastName;
-            FirstName = firstName;
+            FullName = fullName;
             Email = email;
             Phone = phone;
-            Street = street;
-            City = city;
-            PostalCode = postalCode;
-            Country = country;
-            Province = province;
+            FullAddress = fullAddress;
         }
 
-        public Customer(string lastName, string firstName, string email, string phone)
+        public Customer(string fullName, string email, string phone)
         {
-            LastName = lastName;
-            FirstName = firstName;
+            FullName = fullName;
             Email = email;
             Phone = phone;
         }

@@ -23,5 +23,25 @@ namespace WpfApp1
         {
             InitializeComponent();
         }
+
+        private void BtnSaveToExcel_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnSaveToPdf_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void LvOrders_SelectionChanged(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void LvOrderDetail_SelectionChanged(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

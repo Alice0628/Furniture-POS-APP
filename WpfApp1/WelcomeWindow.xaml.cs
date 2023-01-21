@@ -42,7 +42,11 @@ namespace WpfApp1
 
             //Customer customer = new Customer("Smith", "John", "john@gmail.com", "11234567890");
             //Globals.dbContext.Customers.Add(customer);
+
+            //Customer customer = new Customer("Smith", "john@gmail.com", "11234567890");
+            //Globals.dbContext.Customers.Add(customer);
             //Globals.dbContext.SaveChanges();
+
 
         }
 

@@ -6,7 +6,58 @@
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
         Title="OrdersWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+    <Window.Resources>
+        <Style TargetType="{x:Type GridViewColumnHeader}">
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="Padding" Value="6,0,0,0"/>
+        </Style>
+    </Window.Resources>
+    <DockPanel>
+        <StatusBar DockPanel.Dock="Bottom">
+            <StatusBarItem>
+                <TextBlock Name="Status">Welcome!</TextBlock>
+            </StatusBarItem>
+        </StatusBar>
+        <Grid DockPanel.Dock="Left" Height="410">
+            <Button   Name="BtnSaveToExcel" Content="Save Selected to Excel" IsEnabled="{Binding SelectedItems.Count, ElementName=LvCustomers}" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20,20,0,0" Width="150" Height="25" Click="BtnSaveToExcel_Click"/>
+
+
+            <ListView Name="LvOrders"  Margin="20,70,415,30" BorderBrush="#FF8994A7"  SelectionChanged="LvOrders_SelectionChanged" SelectionMode="Multiple">
+                <ListView.Resources>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="TextWrapping" Value="Wrap"/>
+                    </Style>
+                </ListView.Resources>
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="OrderId" Width="70"  DisplayMemberBinding="{Binding OrderId}" />
+                        <GridViewColumn Header="CustomerId" Width="70"  DisplayMemberBinding="{Binding CustomerId}" />
+                        <GridViewColumn Header="UserId" Width="70" DisplayMemberBinding="{Binding UserId}" />
+                        <GridViewColumn Header="Total Paied" Width="70" DisplayMemberBinding="{Binding TotalPadi}" />
+                        <GridViewColumn Header="Order date" Width="80" DisplayMemberBinding="{Binding OrderDate}" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Grid>
+        <Grid>
+            <Button   Name="BtnSaveToPDF" Content="Save to PDF" IsEnabled="{Binding SelectedItems.Count, ElementName=LvCustomers}" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="-400,20,0,0" Width="150" Height="25" Click="BtnSaveToPdf_Click"/>
+            <ListView Name="LvOrderDetail"  Margin="-400,70,20,30" BorderBrush="#FF8994A7"  SelectionChanged="LvOrderDetail_SelectionChanged" SelectionMode="Multiple" >
+                <ListView.Resources>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="TextWrapping" Value="Wrap"/>
+                    </Style>
+                </ListView.Resources>
+               
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="ItemId" Width="80"  DisplayMemberBinding="{Binding ProductId}" />
+                        <GridViewColumn Header="Unit Price" Width="80"  DisplayMemberBinding="{Binding ProductPrice}" />
+                        <GridViewColumn Header="Quantity" Width="80" DisplayMemberBinding="{Binding ProductQuantity}" />
+                        <GridViewColumn Header="Price" Width="80" DisplayMemberBinding="{Binding Price}" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Grid>
+
+    </DockPanel>
 </Window>
