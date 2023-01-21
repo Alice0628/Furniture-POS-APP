@@ -32,11 +32,17 @@ namespace WpfApp1
 
             //Product product = new Product("chair", 12.5);
             //Globals.dbContext.Products.Add(product);
+            //Product product2 = new Product("table", 60.0);
+            //Globals.dbContext.Products.Add(product2);
             //Globals.dbContext.SaveChanges();
 
-            Customer customer = new Customer("Smith", "John", "john@gmail.com", "11234567890");
-            Globals.dbContext.Customers.Add(customer);
-            Globals.dbContext.SaveChanges();
+            //User user= new User("John Smith","123", "john@gmail.com");
+            //Globals.dbContext.Users.Add(user);
+            //Globals.dbContext.SaveChanges();
+
+            //Customer customer = new Customer("Smith", "John", "john@gmail.com", "11234567890");
+            //Globals.dbContext.Customers.Add(customer);
+            //Globals.dbContext.SaveChanges();
 
         }
 

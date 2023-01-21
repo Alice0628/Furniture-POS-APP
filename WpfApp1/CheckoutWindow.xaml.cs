@@ -22,17 +22,23 @@ using Syncfusion.Pdf.Graphics;
 
 using System.ComponentModel;
 using System.Drawing;
-
+using DataObject = System.Windows.DataObject;
+using QuestPDF.Fluent;
+using QuestPDF.Helpers;
+using Colors = QuestPDF.Helpers.Colors;
 
 namespace WpfApp1
 {
     /// <summary>
     /// Interaction logic for CheckoutWindow.xaml
     /// </summary>
+   
     public partial class CheckoutWindow : Window
     {
+        string fileName = "";
         List<CheckoutItemList> items = new List<CheckoutItemList>();
         double totalPrice = 0;
+        int orderIdForPrint = 0;
 
         public CheckoutWindow()
         {
@@ -45,40 +51,62 @@ namespace WpfApp1
         {
             // prepare string list
             List<string> data = new List<string>();
-            if (TbxCustomerId.Text != "")
-            {
-                data.Add("Custemor Id: " + TbxCustomerId.Text);
-            }
+            
+            data.Add("Custemor Id: " + TbxCustomerId.Text);
+
+            data.Add("Issue date: " + DateTime.Now.ToShortDateString());
+            data.Add("---------------------------------------------------------------------------------");
+            data.Add(String.Format("{0,6} {1,25} {1,25} {1,25} {1,25}\n\n", "Product Id", "Name", "Unitptice", "Quantity", "Price"));
             var allItems = GetAllSelectedItems();
             if (allItems == null) return;
             foreach (var item in allItems)
             {
-                data.Add(item.ProductId.ToString() + "          " + item.UnitPrice.ToString() + "          " + item.Quantity.ToString() + "          " + item.Price.ToString());
+                data.Add(String.Format("{0,6} {1,25} {1,25} {1,25} {1,25}\n\n", item.ProductId.ToString() + item.ProductName + item.UnitPrice.ToString() +  item.Quantity.ToString()+  item.Price.ToString()));
             }
             data.Add("---------------------------------------------------------------------------------");
             data.Add("Total Price: $" + LbTotalPrice.Content);
-            // instantiate a saveFileDialog object
+            string text = "";
+            foreach (string d in data)
+            {
+                text += d + "\n";
+            }
 
             // save to file
             try
             {
-                using (PdfDocument document = new PdfDocument())
-                {
-                    //Add a page to the document.
-                    PdfPage page = document.Pages.Add();
-                    //Create PDF graphics for a page.
-                    PdfGraphics graphics = page.Graphics;
-                    //Set the standard font.
-                    PdfFont font = new PdfStandardFont(PdfFontFamily.Helvetica, 20);
-                    //Draw the text.
-                    foreach (string d in data)
+                    Document.Create(Container =>
                     {
-                        graphics.DrawString(d, font, PdfBrushes.Black, new PointF(0, 0));
-                    }
-                    //Save the document.
-                    document.Save("test1.pdf");
+                        Container.Page(page =>
+                        {
+                            page.Size(PageSizes.B4);
+                            page.Margin(2, QuestPDF.Infrastructure.Unit.Centimetre);
+
+                            //page.PageColor("#43a047");
+                            page.DefaultTextStyle(x => x.FontSize(20));
+
+                            //string text = "hello world";
+                            page.Header()
+                                .Text("Order details")
+                                .SemiBold().FontSize(36).FontColor(Colors.Amber.Medium);
+                            page.Content()
+
+                                .PaddingVertical(1, QuestPDF.Infrastructure.Unit.Centimetre)
+                                .Column(x =>
+                                {
+                                    
+                                    x.Spacing(40);
+                                    x.Item().Text(text);
+                                    
+                                });
+
+                            page.Footer()
+                                .AlignCenter()
+                                .Text(DateTime.Now.ToShortDateString());
+                        });
+                    }).GeneratePdf(fileName + ".pdf");
+                    MessageBox.Show(this, "Export to " + fileName +".pdf is successful!", "Success information", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
-            }
+            
             catch (IOException ex)
             {
                 MessageBox.Show(this, "Failed to export to pdf file" + ex.Message, "Inner error", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -184,10 +212,10 @@ namespace WpfApp1
             // get all listview items
             List<CheckoutItemList> lvItemsList = GetAllSelectedItems();
 
-            // claculate the total price)
+            // claculate the price)
             foreach (var item in lvItemsList)
             {
-                totalPrice += item.UnitPrice;
+                totalPrice += item.Price;
             }
             LbTotalPrice.Content = totalPrice;
 
@@ -207,6 +235,8 @@ namespace WpfApp1
 
                 }
                 order = new Order(customerId, Globals.userId, totalPrice);
+                orderIdForPrint = order.OrderId;
+                fileName = "Order - " + orderIdForPrint.ToString();  
                 Globals.dbContext.Orders.Add(order);
                 Globals.dbContext.SaveChanges();
                 // save to OrderItems table
@@ -277,31 +307,70 @@ namespace WpfApp1
 
         private void lstItems_MouseMove(object sender, MouseEventArgs e)
         {
+            //if (e.LeftButton == MouseButtonState.Pressed)
+            //{
+            //    if (e.Source != null)
+            //    {
+            //        CheckoutItemList selectedItem = (CheckoutItemList)LvCheckoutList.SelectedItem;
+
+            //        DragDrop.DoDragDrop(LvCheckoutList, selectedItem, DragDropEffects.Move);
+            //    }
+            //}
+
             if (e.LeftButton == MouseButtonState.Pressed)
             {
                 if (e.Source != null)
                 {
-                    CheckoutItemList selectedItem = (CheckoutItemList)LvCheckoutList.SelectedItem;
+                    //List<DataModel> myList = new List<DataModel>();
+                    //foreach (DataModel Item in lvUsers.SelectedItems)
+                    //{
+                    //    myList.Add(Item);
+                    //}
+                    var selectedItems = LvCheckoutList.SelectedItems;
 
-                    DragDrop.DoDragDrop(LvCheckoutList, selectedItem, DragDropEffects.Move);
+                    DataObject dataObject = new DataObject(LvCheckoutList);
+                    DragDrop.DoDragDrop(LvCheckoutList, dataObject, DragDropEffects.Move);
                 }
             }
         }
 
         private void BtnDelete_Drop(object sender, DragEventArgs e)
         {
-            Type myType = typeof(CheckoutItemList);
-            string modelns = myType.FullName;
+            //Type myType = typeof(CheckoutItemList);
+            //string modelns = myType.FullName;
 
-            //CheckoutItemList selectedItem = e.Data.GetData(modelns) as CheckoutItemList;
-            CheckoutItemList selectedItem = LvCheckoutList.SelectedItem as CheckoutItemList;
-            var result = MessageBox.Show(this, "Are you sure you want to delete " + selectedItem.ProductId.ToString(), "Deletion conformation", MessageBoxButton.OKCancel, MessageBoxImage.Question);
+            ////CheckoutItemList selectedItem = e.Data.GetData(modelns) as CheckoutItemList;
+            //CheckoutItemList selectedItem = LvCheckoutList.SelectedItem as CheckoutItemList;
+            //if (selectedItem == null) return;
+            //var result = MessageBox.Show(this, "Are you sure you want to delete " + selectedItem.ProductId.ToString(), "Deletion conformation", MessageBoxButton.OKCancel, MessageBoxImage.Question);
 
+            //if (result != MessageBoxResult.OK) return;
+
+            //items.Remove(selectedItem);
+            //LvCheckoutList.Items.Refresh();
+            //MessageBox.Show(this, selectedItem +  "has been deleted " + selectedItem.ProductId.ToString(), "Deletion conformation", MessageBoxButton.OKCancel, MessageBoxImage.Information);
+
+
+
+
+            Type myType = typeof(List<CheckoutItemList>);
+
+            var selectedItems = (List<CheckoutItemList>)LvCheckoutList.SelectedItems;
+            if (selectedItems == null) return;
+            List<string> nameArr = new List<string>();
+            string msg = String.Join(",", nameArr);
+            var result = MessageBox.Show(this, "Are you sure you want to delete " + msg, "Deletion conformation", MessageBoxButton.OKCancel, MessageBoxImage.Question);
             if (result != MessageBoxResult.OK) return;
-
-            items.Remove(selectedItem);
+            //CheckoutItemList[] sItemsArr = selectedItems.ToArray();
+           
+            foreach (CheckoutItemList sm in selectedItems)
+            {
+                nameArr.Add(sm.ProductName);
+                items.Remove(sm); 
+            }
+           
             LvCheckoutList.Items.Refresh();
-
+            MessageBox.Show(this, msg + " have been deleted.", "Deletion conformation", MessageBoxButton.OKCancel, MessageBoxImage.Information);
 
         }
 
@@ -311,6 +380,45 @@ namespace WpfApp1
             cWin.Owner = this;
             cWin.Show();
         }
+
+
+
+        private bool Print(string pathStr)
+        {
+            try
+            {
+                if (File.Exists(pathStr) == false)
+                    return false;
+
+                var pr = new Process
+                {
+                    StartInfo =
+                    {
+                        FileName = pathStr,
+                        CreateNoWindow = false,
+                        WindowStyle = ProcessWindowStyle.Normal,
+                        Verb = "Print"
+                    }
+                };
+                pr.Start();
+                MessageBox.Show(this, "succeed to print this file", "succession", MessageBoxButton.OK, MessageBoxImage.Information);
+                return true;
+            }
+            catch (SystemException ex)
+            {
+                MessageBox.Show(this, "failed to print this file" + ex.Message, "Printing error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+        }
+ 
+
+        private void BtnPrint_Click(object sender, RoutedEventArgs e)
+        {
+            Print(fileName);
+        }
     }
+
+
+
 }
 

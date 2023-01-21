@@ -23,7 +23,7 @@
         <Button Content="Done" Click="BtnDone_Click" HorizontalAlignment="Left" Margin="701,276,0,0" VerticalAlignment="Top" Height="31" Width="62" FontSize="20"/>
         <Button Content="Modify" Click="btnModify_Click" HorizontalAlignment="Left" Margin="614,276,0,0" VerticalAlignment="Top" Height="31" Width="81" FontSize="20" RenderTransformOrigin="2.339,0.468"/>
 
-        <Button Content="Export to pdf" HorizontalAlignment="Left" Margin="552,319,0,0" VerticalAlignment="Top" Height="31" Width="211" Click="btnCheckoutExport_Click" FontSize="20"/>
+        <Button Content="Export to pdf" HorizontalAlignment="Left" Margin="552,319,0,0" VerticalAlignment="Top" Height="31" Width="127" Click="btnCheckoutExport_Click" FontSize="20"/>
 
         <ListView Name="LvCheckoutList" Margin="23,33,263,126" SelectionChanged="LvOnChanged_Click" SelectionMode="Extended">
             <ListView.ItemContainerStyle>
@@ -41,7 +41,7 @@
                     <GridViewColumn Header="Price" Width="98" DisplayMemberBinding="{Binding Price}" />
                 </GridView>
             </ListView.View>
- 
+
         </ListView>
 
 
@@ -50,6 +50,7 @@
 
         <Label Name="LbTotalPrice" HorizontalAlignment="Left" Height="36" Margin="467,314,0,0" VerticalAlignment="Top" Width="70" FontSize="20" FontWeight="Bold" RenderTransformOrigin="0.529,-1.249"/>
         <Button AllowDrop="True" Drop="BtnDelete_Drop" Content="Trash" HorizontalAlignment="Left" Margin="23,319,0,0" VerticalAlignment="Top" Width="70" FontSize="20"/>
+        <Button Content="Print" Click="BtnPrint_Click" HorizontalAlignment="Left" Margin="701,319,0,0" VerticalAlignment="Top" Height="31" Width="62" FontSize="20"/>
 
 
 
