@@ -99,3 +99,20 @@
 - Customer listview showing fullname(firstname+lastname)
 3. Need assistance / figure things out
 - N/A
+
+2023/01/21 Zhang Xiao
+1. Done / not done since last scrum:
+- complete delete function via drag-drop in CheckoutWindow
+- complete export to pdf and print function
+2. To do until next Scrum:
+- unit test
+- ppt
+3. Need assistance / figure things out
+- N/A
+
+2020/01/21 Zibin Guo
+1. Done / not done since last scrum:
+- finish CRUD products table and export products list
+2. To do until next Scrum:
+- order windows and export order list and order detail data 3. Need assistance / figure things out
+- find out how to export to excel and pdf
