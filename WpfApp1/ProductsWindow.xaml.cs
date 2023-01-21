@@ -27,7 +27,7 @@ namespace WpfApp1
         string filename;
         public ProductsWindow()
         {
-            InitializeComponent();//test
+            InitializeComponent();
             try
             {
                 Globals.dbContext = new FurnitureDbContext(); // Exceptions
@@ -76,6 +76,7 @@ namespace WpfApp1
                 {
                     File.WriteAllLines(saveFileDialog.FileName, linesList);
                     MessageBox.Show(this, "Seletced Data saved to file", "Confirmation", MessageBoxButton.OK, MessageBoxImage.Information);
+                        Status.Text = "Seletced Data saved to file Successfully!";
                 }
             }
             catch (SystemException ex)
@@ -97,7 +98,7 @@ namespace WpfApp1
                     Uri fileUri = new Uri(openFileDialog.FileName);
                     ImageBox.Source = new BitmapImage(fileUri);
                     LblImage.Visibility = Visibility.Visible;
-
+                    Status.Text = "Loaded image successfully!";
                 }
             }
         }
@@ -120,6 +121,7 @@ namespace WpfApp1
                 LvProducts.ItemsSource = Globals.dbContext.Products.ToList();
                 LvProducts.Items.Refresh(); // tell ListView data has changed
                 ResetFields();
+                Status.Text = "Added product successfully!";
 
             }
             catch (ArgumentException ex)
@@ -142,7 +144,7 @@ namespace WpfApp1
             try
             {
                 Product currSelProduct = LvProducts.SelectedItem as Product;
-                var result = MessageBox.Show(this, "Are you sure you want to delete this item?\n" + currSelProduct, "Confirm deletion", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                var result = MessageBox.Show(this, "Are you sure you want to delete this item?\n" + currSelProduct.Name, "Confirm deletion", MessageBoxButton.YesNo, MessageBoxImage.Question);
                 if (result != MessageBoxResult.Yes) return;
                 // delete - fetch then schedule for deletion, then save changes
                 Product t3 = (from t in Globals.dbContext.Products where t.Id == currSelProduct.Id select t).FirstOrDefault<Product>();
@@ -151,6 +153,7 @@ namespace WpfApp1
                     Globals.dbContext.Products.Remove(t3); // schedule for deletion in the database
                     Globals.dbContext.SaveChanges(); // update the database to synchronize entities in memory with the database
                     LvProducts.ItemsSource = Globals.dbContext.Products.ToList();
+                    Status.Text = "Deleted product successfully!";
                 }
                 else
                 {
@@ -191,6 +194,8 @@ namespace WpfApp1
                     p2.Image = data;
                     Globals.dbContext.SaveChanges(); // update the database to ;synchronize entities in memory with the database                 
                     LvProducts.ItemsSource = Globals.dbContext.Products.ToList();
+                    ResetFields();
+                    Status.Text = "Updated product successfully!";
                 }
                 else
                 {
