@@ -3,34 +3,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WpfApp1" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        mc:Ignorable="d"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d" 
         Title="WelcomeWindow" Height="450" Width="800">
     <Grid>
-        <!--<Image Source="/WpfApp1;component/Image/cover.png"  />-->
+        <Label FontWeight="Bold" Content="Welcome to ZGZ Furniture store Management Application!" HorizontalAlignment="Left" Margin="32,74,0,0" VerticalAlignment="Top" Width="716" FontSize="25"/>
+        <Button Background="AliceBlue" Content="Login" HorizontalAlignment="Left" Margin="344,198,0,0" VerticalAlignment="Top" FontSize="20" Click="BtnToLogin_Click"/>
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="1*" />
-            <RowDefinition Height="10*" />
-            <RowDefinition Height="1*" />
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*" />
-            <ColumnDefinition Width="1*" />
-            <ColumnDefinition Width="1*" />
-            <ColumnDefinition Width="1*" />
-        </Grid.ColumnDefinitions>
-
-        <TextBlock Grid.ColumnSpan="4" Padding="2,2,2,2" Background="BlueViolet" Width="800" Grid.Row="0" TextAlignment="Center" VerticalAlignment="Bottom"   FontSize="30" FontWeight="Bold" Foreground="White"> ZGZ Furniture</TextBlock>
-
-        <StackPanel  Grid.Row="1" Grid.ColumnSpan="4" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock Background="AntiqueWhite" TextAlignment="Center" Width="500" Padding="5,5,5,5"  TextWrapping="WrapWithOverflow" FontWeight="Bold" Text="Welcome to ZGZ Furniture store Management Application!" FontSize="25" />
-            <Button Margin="0 50 0 0" Content="Login" Foreground="White" FontSize="20" BorderBrush="BlueViolet" Background ="Blue" Click="BtnToLogin_Click" Width="100" />
-        </StackPanel>
-
-
-        <Label Background="BlueViolet" Width="800" Grid.Row="2" Grid.ColumnSpan="4" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="@ZGZ Furniture" Foreground="Black"/>
-        
-        
     </Grid>
 </Window>
