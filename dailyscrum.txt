@@ -33,6 +33,18 @@
 - create user profile window
 - R/U profile from database
 3. Need assistance / figure things out
+
+2023/01/21 Qichen
+1. Done since last scrum
+- Update customer table structure
+- Update customer
+- Delete customer
+- Export to file
+2. Plan until next Scrum
+- Try applying ribbon into customer window
+- looking for info to install app
+3. Need assistance / figure things out
+- N/A
 - table constrains
 
 2023/01/19 Xiao Zhang
