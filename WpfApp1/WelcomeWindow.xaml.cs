@@ -47,7 +47,6 @@ namespace WpfApp1
             //Globals.dbContext.Customers.Add(customer);
             //Globals.dbContext.SaveChanges();
 
-
         }
 
 

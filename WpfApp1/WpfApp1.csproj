@@ -154,8 +154,8 @@
       <DependentUpon>EditUserProfileDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Globals.cs" />
-    <Compile Include="User.cs" />
     <Compile Include="FurnitureDbContext.cs" />
+    <Compile Include="User.cs" />
     <Compile Include="LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>

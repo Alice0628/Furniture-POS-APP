@@ -24,7 +24,13 @@
         <ListView Name="LvCustomers" SelectionMode="Extended" VerticalAlignment="Top" Margin="-150,60,10,0" Height="240" Width="450" SelectionChanged="LvCustomers_SelectionChanged">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Name" Width="80" DisplayMemberBinding="{Binding FullName}" />
+                    <GridViewColumn Header="Name" Width="100">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label Content="{Binding FullName}" Foreground="Blue"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
                     <GridViewColumn Header="Phone" Width="90" DisplayMemberBinding="{Binding Phone}" />
                     <GridViewColumn Header="Email" Width="110" DisplayMemberBinding="{Binding Email}" />
                     <GridViewColumn Header="Address" DisplayMemberBinding="{Binding FullAddress}" />
