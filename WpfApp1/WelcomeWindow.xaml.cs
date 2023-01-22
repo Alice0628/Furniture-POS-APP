@@ -40,7 +40,7 @@ namespace WpfApp1
             Globals.dbContext.Users.Add(user);
           
 
-            Customer customer = new Customer("Smith", "John", "john@gmail.com", "11234567890");
+            Customer customer = new Customer("Smith John", "john@gmail.com", "11234567890");
             Globals.dbContext.Customers.Add(customer);
             Globals.dbContext.SaveChanges();
             //Customer customer = new Customer("Smith", "john@gmail.com", "11234567890");
