@@ -7,11 +7,31 @@
         mc:Ignorable="d"
         Title="LoginWindow" Height="450" Width="800">
     <Grid>
-        <Label Content="Email:" HorizontalAlignment="Left" Height="38" Margin="236,93,0,0" VerticalAlignment="Top" Width="96" FontSize="20" FontWeight="Bold" RenderTransformOrigin="0.41,0.501"/>
-        <Label Content="Password:" HorizontalAlignment="Left" Height="38" Margin="236,190,0,0" VerticalAlignment="Top" Width="130" FontSize="20" FontWeight="Bold"/>
-        <TextBox Name="tbxEmail" HorizontalAlignment="Left" Height="38" Margin="236,136,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="349" FontSize="20"/>
-        <TextBox Name="tbxPass" HorizontalAlignment="Left" Height="38" Margin="236,233,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="349" FontSize="20"/>
-        <Button Content="Sign in" HorizontalAlignment="Left" Margin="236,302,0,0" VerticalAlignment="Top" Height="29" Width="130" FontSize="18" Click="BtnSignin_Click"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="10*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+       
+
+        <TextBlock Padding="2,2,2,2" Background="BlueViolet" Width="800" Grid.Row="0" TextAlignment="Center" VerticalAlignment="Bottom"   FontSize="30" FontWeight="Bold" Foreground="White"> ZGZ Furniture</TextBlock>
+
+        <StackPanel   Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Label Padding="5,5,5,5" Background="AntiqueWhite" Width="400" Content="Email:" HorizontalAlignment="Left" Height="38" FontSize="20" FontWeight="Bold" />
+            <TextBox  Name="tbxEmail" HorizontalAlignment="Left" Height="38"   Width="400" FontSize="20"/>
+            <Label Padding="5,5,5,5" Background="AntiqueWhite" Content="Password:" HorizontalAlignment="Left" Height="38" Width="400" FontSize="20" FontWeight="Bold"/>
+            <TextBox Name="tbxPass" HorizontalAlignment="Left" Height="38"  Width="400" FontSize="20"/>
+            <Button Content="Sign in" Background="Blue" Margin="0,20,0,0" Foreground="White" Height="29" Width="130" FontSize="18" Click="BtnSignin_Click"/>
+        </StackPanel>
+        <Label Background="BlueViolet" Width="800" Grid.Row="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="@ZGZ Furniture" Foreground="Black"/>
+        
+
+
+
+
+
+        
+       
 
     </Grid>
 </Window>

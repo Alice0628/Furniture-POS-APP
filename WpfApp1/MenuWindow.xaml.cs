@@ -24,7 +24,7 @@ namespace WpfApp1
         {
             InitializeComponent();
             UserName = username;
-            LbUserName.Content = UserName;
+            tbxUser.Text = UserName;
         }
 
         

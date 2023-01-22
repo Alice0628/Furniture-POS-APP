@@ -173,6 +173,7 @@
     <Compile Include="EditUserProfileDialog.xaml.cs">
       <DependentUpon>EditUserProfileDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="FurnitureDbContext.cs" />
     <Compile Include="Globals.cs" />
     <Compile Include="User.cs" />
     <Compile Include="LoginWindow.xaml.cs">
