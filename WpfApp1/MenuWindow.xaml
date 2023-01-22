@@ -4,17 +4,45 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
-        mc:Ignorable="d" Background="AntiqueWhite"
+        mc:Ignorable="d"  
         Title="MenuWindow" Height="450" Width="800">
     <Grid>
-        <Label FontWeight="Bold" Content="Welcome" HorizontalAlignment="Left" Margin="256,39,0,0" VerticalAlignment="Top" FontSize="24" Width="144"/>
-        <Label Name="LbUserName" FontWeight="Bold" HorizontalAlignment="Left" Margin="400,39,0,0" VerticalAlignment="Top" FontSize="24" Width="144"/>
-        <Button Background="AliceBlue" Content="Profile" Click ="btnProfile_Click"  HorizontalAlignment="Center" Margin="0,86,0,0" VerticalAlignment="Top" Height="46" Width="353" FontSize="20"/>
-        <Button Background="AliceBlue" Content="Customers" Click="btnCustomers_Click" HorizontalAlignment="Center" Margin="0,154,0,0" VerticalAlignment="Top" Height="46" Width="353" FontSize="20"/>
-        <Button Background="AliceBlue" Content="Products" Click="btnProducts_Click" HorizontalAlignment="Center" Margin="0,217,0,0" VerticalAlignment="Top" Height="46" Width="353" FontSize="20"/>
-        <Button Background="AliceBlue" Content="Orders" Click ="btnOrder_Click" HorizontalAlignment="Center" Margin="0,286,0,0" VerticalAlignment="Top" Height="46" Width="353" FontSize="20"/>
-        <Button Background="AliceBlue" Content="Checkout" Click ="btnChecout_Click" HorizontalAlignment="Center" Margin="0,359,0,0" VerticalAlignment="Top" Height="46" Width="353" FontSize="20"/>
-       
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="10*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="2*" />
+
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.ColumnSpan="2" Padding="2,2,2,2" Background="BlueViolet" Width="800" Grid.Row="0" TextAlignment="Center" VerticalAlignment="Bottom"   FontSize="30" FontWeight="Bold" Foreground="White"> ZGZ Furniture</TextBlock>
+
+        <StackPanel Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="68,31,0,0">
+            <Button Background="blue" Foreground="White" BorderBrush="BlueViolet"  Margin="0,10,0,0" Content="Profile" Click ="btnProfile_Click"  HorizontalAlignment="Center" Height="46" Width="167" FontSize="25"/>
+            <Button Background="blue" Foreground="White" BorderBrush="BlueViolet"  Margin="0,10,0,0"  Content="Customers" Click="btnCustomers_Click" HorizontalAlignment="Center" Height="46" Width="169" FontSize="25"/>
+            <Button Background="blue" Foreground="White" BorderBrush="BlueViolet" Margin="0,10,0,0"  Content="Products" Click="btnProducts_Click" HorizontalAlignment="Center" Height="46" Width="169" FontSize="25"/>
+            <Button Background="blue" Foreground="White" BorderBrush="BlueViolet" Margin="0,10,0,0"  Content="Orders" Click ="btnOrder_Click" HorizontalAlignment="Center" Height="46" Width="172" FontSize="25"/>
+            <Button Background="blue" Foreground="White" BorderBrush="BlueViolet"  Margin="0,10,0,0" Content="Checkout" Click ="btnChecout_Click" HorizontalAlignment="Center" Height="46" Width="176" FontSize="25"/>
+        </StackPanel>
+        <StackPanel Background="AntiqueWhite" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Padding="10,10,10,10" Width="350" TextAlignment="Center" TextWrapping="WrapWithOverflow" FontWeight="Bold" Text="Welcome" FontSize="50" />
+            <TextBlock Padding="10,10,10,10" Name="tbxUser" TextWrapping="Wrap" Height="56" Margin="0,50,0,0" Width="350" TextAlignment="Center" FontSize="40"/>
+        </StackPanel>
+
+
+        <Label Background="BlueViolet" Width="800" Grid.Row="2" Grid.ColumnSpan="4" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="@ZGZ Furniture" Foreground="Black"/>
+
+
+
+
+
+
+
+
+
 
     </Grid>
 </Window>
