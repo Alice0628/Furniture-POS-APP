@@ -355,7 +355,7 @@ namespace WpfApp1
 
             Type myType = typeof(List<CheckoutItemList>);
 
-            var selectedItems = (List<CheckoutItemList>)LvCheckoutList.SelectedItems;
+            var selectedItems = LvCheckoutList.SelectedItems;
             if (selectedItems == null) return;
             List<string> nameArr = new List<string>();
             string msg = String.Join(",", nameArr);

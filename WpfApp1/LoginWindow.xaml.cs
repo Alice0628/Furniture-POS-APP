@@ -27,7 +27,7 @@ namespace WpfApp1
 
         private void BtnSignin_Click(object sender, RoutedEventArgs e)
         {
-            // get the input value and do validatin
+            // get the input value and do validation
             string email = tbxEmail.Text;
             string pass = tbxPass.Text;
 
@@ -36,17 +36,19 @@ namespace WpfApp1
 
             if (user == null)
             {
-                MessageBox.Show(this, "Email or password not correct, please try aigin!", "Indentity verification failed", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show(this, "Email or password not correct, please try again!", "Indentity verification failed", MessageBoxButton.OK, MessageBoxImage.Information);
                 return;
             }
 
             // if found, go to profile window; if no, show messagebox and stay in this page
 
             Globals.userId = user.UserId;
+            this.Visibility = Visibility.Collapsed;
             MenuWindow mWin = new MenuWindow(user.UserName);
             mWin.Owner = this;
-            mWin.Show();
+            mWin.ShowDialog();
 
+            Visibility = Visibility.Visible;
         }
     }
 }
