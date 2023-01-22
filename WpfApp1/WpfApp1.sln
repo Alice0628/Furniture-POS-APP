@@ -5,9 +5,7 @@ VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp1", "WpfApp1.csproj", "{2CEC50F3-7EA2-4B42-B484-49395AD57445}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "FurnitureManagementSetup", "..\FurnitureManagementSetup\FurnitureManagementSetup.vdproj", "{C7925E62-0600-42EB-A204-AEA01A69AE64}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp1Tests", "..\WpfApp1Tests\WpfApp1Tests.csproj", "{79A6B400-BA3E-40D6-83C6-E71C90CD62C7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FurnitureMSTest", "..\FurnitureTestQZ1\FurnitureMSTest.csproj", "{AB8AC6F1-64A3-44A2-9978-CB7FEF46887A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,12 +17,10 @@ Global
 		{2CEC50F3-7EA2-4B42-B484-49395AD57445}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2CEC50F3-7EA2-4B42-B484-49395AD57445}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2CEC50F3-7EA2-4B42-B484-49395AD57445}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C7925E62-0600-42EB-A204-AEA01A69AE64}.Debug|Any CPU.ActiveCfg = Debug
-		{C7925E62-0600-42EB-A204-AEA01A69AE64}.Release|Any CPU.ActiveCfg = Release
-		{79A6B400-BA3E-40D6-83C6-E71C90CD62C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{79A6B400-BA3E-40D6-83C6-E71C90CD62C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{79A6B400-BA3E-40D6-83C6-E71C90CD62C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{79A6B400-BA3E-40D6-83C6-E71C90CD62C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB8AC6F1-64A3-44A2-9978-CB7FEF46887A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB8AC6F1-64A3-44A2-9978-CB7FEF46887A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB8AC6F1-64A3-44A2-9978-CB7FEF46887A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB8AC6F1-64A3-44A2-9978-CB7FEF46887A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

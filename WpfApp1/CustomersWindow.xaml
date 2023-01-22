@@ -20,7 +20,8 @@
             </StatusBarItem>
         </StatusBar>
 
-        <Button Name="BtnSaveToFile" Content="Save Selected..." IsEnabled="{Binding SelectedItems.Count, ElementName=LvCustomers}" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20,20,0,0" Width="150" Height="25" Click="BtnSaveToFile_Click"/>
+        <Button Name="BtnSaveToFile" Background="CadetBlue" Content="Save Selected..." IsEnabled="{Binding SelectedItems.Count, ElementName=LvCustomers}" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20,20,0,0" Width="150" Height="25" Click="BtnSaveToFile_Click"/>
+
         <ListView Name="LvCustomers" SelectionMode="Extended" VerticalAlignment="Top" Margin="-150,60,10,0" Height="240" Width="450" SelectionChanged="LvCustomers_SelectionChanged">
             <ListView.View>
                 <GridView>
@@ -63,9 +64,9 @@
             <TextBox Name="TbxCountry" HorizontalAlignment="Left" Margin="245,145,0,0" Text="" Padding="3,3,0,0" VerticalAlignment="Top" Width="75" Height="26"/>
 
 
-            <Button Name="BtnAdd" Content="Add" HorizontalAlignment="Left" Margin="30,185,0,0" Width="70" Height="30" Click="BtnAdd_Click"/>
-            <Button Name="BtnUpdate" Content="Update" IsEnabled="{Binding SelectedItems.Count, ElementName=LvCustomers}" HorizontalAlignment="Center" Margin="0,185,0,0" Width="70" Height="30" Click="BtnUpdate_Click" />
-            <Button Name="BtnDelete" Content="Delete" IsEnabled="{Binding SelectedItems.Count, ElementName=LvCustomers}" HorizontalAlignment="Right" Margin="0,185,30,0" Width="70" Height="30" Click="BtnDelete_Click" />
+            <Button Name="BtnAdd" Content="Add" Background="CadetBlue" HorizontalAlignment="Left" Margin="30,185,0,0" Width="70" Height="30" Click="BtnAdd_Click"/>
+            <Button Name="BtnUpdate" Content="Update" Background="CadetBlue" IsEnabled="{Binding SelectedItems.Count, ElementName=LvCustomers}" HorizontalAlignment="Center" Margin="0,185,0,0" Width="70" Height="30" Click="BtnUpdate_Click" />
+            <Button Name="BtnDelete" Content="Delete" Background="CadetBlue" IsEnabled="{Binding SelectedItems.Count, ElementName=LvCustomers}" HorizontalAlignment="Right" Margin="0,185,30,0" Width="70" Height="30" Click="BtnDelete_Click" />
 
         </Grid>
 
