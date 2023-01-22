@@ -15,16 +15,13 @@ using System.Windows.Shapes;
 namespace WpfApp1
 {
     /// <summary>
-    /// Interaction logic for OrderDetailDialog.xaml
+    /// Interaction logic for OrderDetailDialogue.xaml
     /// </summary>
-    public partial class OrderDetailDialog : Window
+    public partial class OrderDetailDialogue : Window
     {
-        public OrderDetailDialog()
+        public OrderDetailDialogue()
         {
             InitializeComponent();
-            Globals.dbContext = new FurnitureDbContext();
-           
-
         }
 
         private void BtnPrint_Click(object sender, RoutedEventArgs e)
@@ -40,6 +37,5 @@ namespace WpfApp1
         {
             this.Close();
         }
-
     }
 }

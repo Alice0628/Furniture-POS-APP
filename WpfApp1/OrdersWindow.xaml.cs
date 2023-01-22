@@ -184,11 +184,12 @@ namespace WpfApp1
             var currentOrderItem = Globals.dbContext.OrderItems.Where(o => o.OrderId == currSelOrder.OrderId).ToList();
 
             if (currentOrderItem == null) return;
-            OrderDetailDialog orderDetailDialog = new OrderDetailDialog();
-            orderDetailDialog.Owner = this;
-            orderDetailDialog.LvOrderDetail.ItemsSource = currentOrderItem;
-            orderDetailDialog.LblTotal.Content = currSelOrder.TotalPaied.ToString();
-            orderDetailDialog.ShowDialog();
+
+            OrderDetailDialogue orderDetailDialogue = new OrderDetailDialogue();
+            orderDetailDialogue.Owner = this;
+            orderDetailDialogue.LvOrderDetail.ItemsSource = currentOrderItem;
+            orderDetailDialogue.LblTotal.Content = currSelOrder.TotalPaied.ToString();
+            orderDetailDialogue.ShowDialog();
         }
 
 

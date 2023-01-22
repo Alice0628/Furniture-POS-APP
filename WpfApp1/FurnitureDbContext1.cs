@@ -7,9 +7,8 @@ namespace WpfApp1
 {
     public partial class FurnitureDbContext : DbContext
     {
-
         public FurnitureDbContext()
-         : base("name=FurnitureDbContext")
+            : base("name=FurnitureDbContext")
         {
             Database.SetInitializer<FurnitureDbContext>(new DropCreateDatabaseIfModelChanges<FurnitureDbContext>());
         }
