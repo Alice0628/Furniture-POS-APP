@@ -47,6 +47,10 @@
     <Reference Include="HarfBuzzSharp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
       <HintPath>packages\HarfBuzzSharp.2.8.2.3\lib\net462\HarfBuzzSharp.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Office.Interop.Excel.15.0.4795.1001\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="QuestPDF, Version=2022.12.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\QuestPDF.2022.12.1\lib\net462\QuestPDF.dll</HintPath>
     </Reference>
@@ -122,6 +126,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="OrderDetailDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="OrdersWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -154,6 +162,9 @@
       <DependentUpon>EditUserProfileDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Globals.cs" />
+    <Compile Include="OrderDetailDialog.xaml.cs">
+      <DependentUpon>OrderDetailDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="User.cs" />
     <Compile Include="FurnitureDbContext.cs" />
     <Compile Include="LoginWindow.xaml.cs">
