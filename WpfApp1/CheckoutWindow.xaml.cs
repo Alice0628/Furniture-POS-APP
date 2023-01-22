@@ -350,9 +350,6 @@ namespace WpfApp1
             //LvCheckoutList.Items.Refresh();
             //MessageBox.Show(this, selectedItem +  "has been deleted " + selectedItem.ProductId.ToString(), "Deletion conformation", MessageBoxButton.OKCancel, MessageBoxImage.Information);
 
-
-
-
             Type myType = typeof(List<CheckoutItemList>);
 
             var selectedItems = LvCheckoutList.SelectedItems;
