@@ -76,7 +76,7 @@ namespace WpfApp1
                 {
                     File.WriteAllLines(saveFileDialog.FileName, linesList);
                     MessageBox.Show(this, "Seletced Data saved to file", "Confirmation", MessageBoxButton.OK, MessageBoxImage.Information);
-                        Status.Text = "Seletced Data saved to file Successfully!";
+                    Status.Text = "Seletced Data saved to file Successfully!";
                 }
             }
             catch (SystemException ex)
@@ -122,6 +122,7 @@ namespace WpfApp1
                 LvProducts.Items.Refresh(); // tell ListView data has changed
                 ResetFields();
                 Status.Text = "Added product successfully!";
+                MessageBox.Show(this, "Add success!", "write ", MessageBoxButton.OK, MessageBoxImage.Information);
 
             }
             catch (ArgumentException ex)
@@ -133,10 +134,7 @@ namespace WpfApp1
                 MessageBox.Show(this, "Error reading from database\n" + ex.Message, "Database error",
                     MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            finally
-            {
-                MessageBox.Show(this, "Add success!", "write ", MessageBoxButton.OK, MessageBoxImage.Information);
-            }
+
         }
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
@@ -196,6 +194,7 @@ namespace WpfApp1
                     LvProducts.ItemsSource = Globals.dbContext.Products.ToList();
                     ResetFields();
                     Status.Text = "Updated product successfully!";
+                    MessageBox.Show(this, "Update success!", "write ", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 else
                 {
@@ -209,12 +208,6 @@ namespace WpfApp1
                 MessageBox.Show(this, "Database operation failed:" + ex.Message, "write error", MessageBoxButton.OK, MessageBoxImage.Error);
 
             }
-            finally
-            {
-                MessageBox.Show(this, "Update success!", "write ", MessageBoxButton.OK, MessageBoxImage.Information);
-
-            }
-
         }
 
         private void LvProducts_SelectionChanged(object sender, SelectionChangedEventArgs e)
