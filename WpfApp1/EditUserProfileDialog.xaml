@@ -17,7 +17,7 @@
         <Label Content="Enter Password to Continue..." Foreground="red" HorizontalAlignment="Left" Margin="62,99,0,0" VerticalAlignment="Top"/>
 
         <Label Content="Password:" HorizontalAlignment="Left" Margin="40,130,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="TbxPassword"  HorizontalAlignment="Left" Margin="115,130,0,0" Padding="2,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Height="26" FontFamily="Gabriola" FontSize="18"/>
+        <PasswordBox x:Name="TbxPassword" HorizontalAlignment="Left" Margin="115,130,0,0" Padding="2,0,0,0" Password="" VerticalAlignment="Top" Width="120" Height="26" FontFamily="Gabriola" FontSize="18"/>
 
         <Button Name="BtnConfirm" Content="Confirm" HorizontalAlignment="Left" Margin="62,180,0,0" VerticalAlignment="Top" Height="24" Width="59" Click="BtnConfirm_Click"/>
         <Button Name="BtnCancel" IsCancel="True" Content="Cancel" HorizontalAlignment="Left" Margin="160,180,0,0" VerticalAlignment="Top" Height="24" Width="59"/>

@@ -39,10 +39,10 @@ namespace WpfApp1
                     return false;
                 }
 
-                Globals.userId = user.UserId;
-                MenuWindow mWin = new MenuWindow(user.UserName);
-                mWin.Owner = this;
-                mWin.Show();
+                //Globals.userId = user.UserId;
+                //MenuWindow mWin = new MenuWindow(user.UserName);
+                //mWin.Owner = this;
+                //mWin.Show();
                 return true;
             }
             catch(SystemException ex)
@@ -53,13 +53,19 @@ namespace WpfApp1
         }
         private void BtnSignin_Click(object sender, RoutedEventArgs e)
         {
-            // get the input value and do validation
             string email = tbxEmail.Text;
             string pass = tbxPass.Password;
+            VerifyIdentity(email, pass);
 
-            VerifyIdentity(email,pass);
-            
-            this.Visibility = Visibility.Visible;
+            User user = (from u in Globals.dbContext.Users where u.Email == email && u.Password == pass select u).FirstOrDefault<User>();
+
+            Globals.userId = user.UserId;
+            this.Visibility = Visibility.Collapsed;
+            MenuWindow mWin = new MenuWindow(user.UserName);
+            mWin.Owner = this;
+            mWin.ShowDialog();
+
+            Visibility = Visibility.Visible;
         }
     }
 }
