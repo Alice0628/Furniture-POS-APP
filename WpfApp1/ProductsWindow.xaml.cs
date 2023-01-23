@@ -69,7 +69,8 @@ namespace WpfApp1
             try
             {
                 SaveFileDialog saveFileDialog = new SaveFileDialog();
-                saveFileDialog.InitialDirectory = @"D:\Full Stack Developer\(Course 14)Application Development I\Project\AppDev1Project\WpfApp1";
+                saveFileDialog.InitialDirectory = Directory.GetCurrentDirectory();
+                //saveFileDialog.InitialDirectory = @"D:\Full Stack Developer\(Course 14)Application Development I\Project\AppDev1Project\WpfApp1";
                 saveFileDialog.Filter = "Text file (*.txt)|*.txt|Data file (*.data)|*.data|All Files| *.* ";//*.*, *.txt, *.data
 
                 if (saveFileDialog.ShowDialog() == true)
@@ -229,7 +230,7 @@ namespace WpfApp1
                 System.Drawing.Image image = ByteArrayToImage(currSelProduct.Image);
                 Random random = new Random();
 
-                filename = "d:\\test" + random.Next(1000) + ".png";
+                filename = Directory.GetCurrentDirectory() + "test" + random.Next(1000) + ".png";
                 image.Save(filename, System.Drawing.Imaging.ImageFormat.Png);
 
                 ImageSourceConverter imgs = new ImageSourceConverter();
@@ -261,9 +262,7 @@ namespace WpfApp1
             using (var ms = new MemoryStream())
             {
                 imageIn.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
-
                 return ms.ToArray();
-
             }
         }
 

@@ -69,5 +69,10 @@ namespace WpfApp1
             pWin.Show();
 
         }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Environment.Exit(1);
+        }
     }
 }

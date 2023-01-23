@@ -3,15 +3,50 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Data.Entity.Core.Metadata.Edm;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace WpfApp1
 {
-   public class Customer
+    public class Customer
     {
-        public int CustomerId{ get; set; }
+        public bool EmailIsValid(string email)
+        {
+            string pattern = @"^[A-Za-z\d_.]{1,10}@[A-Za-z\d]{1,10}.[A-Za-z\d]{1,10}$";
+            return Regex.IsMatch(email, pattern);
+        }
+        public bool PhoneIsValid(string phone)
+        {
+            string pattern = @"^1\d{10}$";
+            return Regex.IsMatch(phone, pattern);
+        }
+
+        public bool FullAddressIsValid(string address)
+        {
+            if (address == null || address == "") return true;
+            else
+            {
+                string[] data = address.Split(',');
+                if (data.Length != 5) return false;
+                else return true;
+            }
+        }
+
+        public bool AddCustomer()
+        {
+            if (EmailIsValid(Email) && PhoneIsValid(Phone) && FullAddressIsValid(FullAddress))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public int CustomerId { get; set; }
 
         [Required]
         [StringLength(100)]
@@ -19,11 +54,13 @@ namespace WpfApp1
 
         [Required]
         private string _email;
-        public string Email {
+        public string Email
+        {
             get
-            { 
+            {
                 return _email;
-            } set
+            }
+            set
             {
                 Regex regex = new Regex(@"^[A-Za-z\d_.]{1,10}@[A-Za-z\d]{1,10}.[A-Za-z\d]{1,10}$");
                 if (!regex.IsMatch(value))
@@ -38,10 +75,12 @@ namespace WpfApp1
         private string _phone;
         public string Phone
         {
-            get {
+            get
+            {
                 return _phone;
             }
-            set {
+            set
+            {
                 Regex regex = new Regex(@"^1\d{10}$");
                 if (!regex.IsMatch(value))
                 {
@@ -50,7 +89,7 @@ namespace WpfApp1
                 _phone = value;
             }
         }
-        
+
         [StringLength(100)]
         public string FullAddress { get; set; }
 

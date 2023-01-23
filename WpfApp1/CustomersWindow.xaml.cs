@@ -22,6 +22,7 @@ namespace WpfApp1
     /// <summary>
     /// Interaction logic for CustomerWindow.xaml
     /// </summary>
+   
 
     public partial class CustomerWindow : Window
     {
@@ -39,7 +40,7 @@ namespace WpfApp1
                 Environment.Exit(1);
             }
         }
-
+  
         public void ResetFileds()
         {
             TbxFirstName.Text = null;
@@ -241,5 +242,6 @@ namespace WpfApp1
         {
 
         }
+
     }
 }

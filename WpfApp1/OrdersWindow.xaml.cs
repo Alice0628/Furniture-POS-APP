@@ -27,7 +27,7 @@ namespace WpfApp1
     /// </summary>
     public partial class OrdersWindow : System.Windows.Window
     {
-        string fileName = "D:\\MyExcel.xlsx";
+        string fileName = Directory.GetCurrentDirectory() + "\\OrdersList.xlsx";
         public OrdersWindow()
         {
             InitializeComponent();
@@ -62,13 +62,14 @@ namespace WpfApp1
                 Microsoft.Office.Interop.Excel.Application excelAPP = null;
                 Microsoft.Office.Interop.Excel.Workbook WB = null;
                 Microsoft.Office.Interop.Excel.Worksheet WS = null;
-                Microsoft.Office.Interop.Excel.Range Range = null;
+                //Microsoft.Office.Interop.Excel.Range Range = null;
 
                 //Create an object of Workbook
                 excelAPP = new Microsoft.Office.Interop.Excel.Application();
-                WB = excelAPP.Workbooks.Add(fileName);
-                //WB = OpenExcelApp("D:\\MyExcel.xlsx", 1);
+                //WB = excelAPP.Workbooks.Add(fileName);
+                //WB = OpenExcelApp(fileName, 1);
                 //WB = excelAPP.Workbooks.Add("D:\\MyExcel.xlsx");
+                WB = excelAPP.Workbooks.Open(fileName);
                 WS = (Microsoft.Office.Interop.Excel.Worksheet)WB.Sheets[1];
                 
                 //CreateHeader;
@@ -92,6 +93,7 @@ namespace WpfApp1
                     WS.Cells[5][ind] = order.TotalPaied;
                     //}
                     ind++;
+                  
                 }
 
                 //CloseExcelApp();
@@ -118,62 +120,7 @@ namespace WpfApp1
                 MessageBox.Show(this, "Failed to Export to Excel File\n" + ex.Message, "Inner error",
                     MessageBoxButton.OK, MessageBoxImage.Error);
             }
-
-            //void OpenExcelApp(string Location, int workSheet)
-            //{
-            //    //WB = excelAPP.Workbooks.Open(Location);
-            //    WB = excelAPP.Workbooks.Add(Location);
-            //    WS = (Microsoft.Office.Interop.Excel.Worksheet)WB.Sheets[workSheet];
-            //    //return WS;
-            //}
-            //void CreateHeader()
-            //{
-            //    //int ind = 1;
-            //    //foreach (object ob in this.dgvFields.Columns.Select(cs => cs.Header).ToList())
-            //    //{
-            //    //    this.WS.Cells[1, ind] = ob.ToStrihng();
-            //    //    ind++;
-            //    //}
-            //    WS.Cells[1, 1] = "OrderId";
-            //    WS.Cells[1, 2] = "CustomerId";
-            //    WS.Cells[1, 3] = "UserId";
-            //    WS.Cells[1, 4] = "OrderDate";
-            //    WS.Cells[1, 5] = "TotalPaied";
-            //}
-            //void InsertData()
-            //{
-            //    int ind = 2;
-            //    foreach (Order order in oList)
-            //    {
-            //        //DataRow DR = DRV.Row;
-            //        //for (int ind1 = 0; ind1 < oList.Count; ind1++)
-            //        //{
-            //        WS.Cells[ind][1] = order.OrderId;
-            //        WS.Cells[ind][2] = order.CustomerId;
-            //        WS.Cells[ind][3] = order.UserId;
-            //        WS.Cells[ind][4] = order.OrderDate;
-            //        WS.Cells[ind][5] = order.TotalPaied;
-            //        //}
-            //        ind++;
-            //    }
-            //}
-            //void CloseExcelApp()
-            //{
-            //    if (excelAPP.ActiveWorkbook != null)
-            //        excelAPP.ActiveWorkbook.Save();
-            //    if (excelAPP != null)
-            //    {
-            //        if (WB != null)
-            //        {
-            //            if (WS != null)
-            //                Marshal.ReleaseComObject(WS);
-            //            WB.Close(false, Type.Missing, Type.Missing);
-            //            Marshal.ReleaseComObject(WB);
-            //        }
-            //        excelAPP.Quit();
-            //        Marshal.ReleaseComObject(excelAPP);
-            //    }
-            //}
+            
         }
 
         private void LvOrders_SelectionChanged(object sender, RoutedEventArgs e)

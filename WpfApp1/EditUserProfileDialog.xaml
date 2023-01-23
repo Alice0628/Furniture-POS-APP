@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d" ResizeMode="NoResize" WindowStartupLocation="CenterOwner"
-        Title="Edit Profile" Height="250" Width="300">
+        Title="Edit Profile" Height="280" Width="300">
 
     <Grid>
         <Label Content="Name:" HorizontalAlignment="Left" Margin="40,27,0,0" VerticalAlignment="Top" Width="62"/>
@@ -13,11 +13,13 @@
 
         <Label Content="Email:" HorizontalAlignment="Left" Margin="40,68,0,0" VerticalAlignment="Top" Width="62"/>
         <TextBox Name="TbxEmail"  HorizontalAlignment="Left" Margin="115,68,0,0" Padding="2,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Height="26" FontFamily="Gabriola" FontSize="18"/>
-        
-        <Label Content="Password:" HorizontalAlignment="Left" Margin="40,112,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="TbxPassword"  HorizontalAlignment="Left" Margin="115,112,0,0" Padding="2,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Height="26" FontFamily="Gabriola" FontSize="18"/>
 
-        <Button Name="BtnConfirm" Content="Confirm" HorizontalAlignment="Left" Margin="59,169,0,0" VerticalAlignment="Top" Height="24" Width="59" Click="BtnConfirm_Click"/>
-        <Button Name="BtnCancel" IsCancel="True" Content="Cancel" HorizontalAlignment="Left" Margin="157,169,0,0" VerticalAlignment="Top" Height="24" Width="59"/>
+        <Label Content="Enter Password to Continue..." Foreground="red" HorizontalAlignment="Left" Margin="62,99,0,0" VerticalAlignment="Top"/>
+
+        <Label Content="Password:" HorizontalAlignment="Left" Margin="40,130,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="TbxPassword"  HorizontalAlignment="Left" Margin="115,130,0,0" Padding="2,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Height="26" FontFamily="Gabriola" FontSize="18"/>
+
+        <Button Name="BtnConfirm" Content="Confirm" HorizontalAlignment="Left" Margin="62,180,0,0" VerticalAlignment="Top" Height="24" Width="59" Click="BtnConfirm_Click"/>
+        <Button Name="BtnCancel" IsCancel="True" Content="Cancel" HorizontalAlignment="Left" Margin="160,180,0,0" VerticalAlignment="Top" Height="24" Width="59"/>
     </Grid>
 </Window>
