@@ -1,6 +1,6 @@
 using WpfApp1;
 
-namespace FurnitureTestQZ1
+namespace FurnitureMSTest
 {
     [TestClass]
     public class UnitTest1
