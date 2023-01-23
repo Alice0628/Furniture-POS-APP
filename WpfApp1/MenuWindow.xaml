@@ -11,7 +11,7 @@
             <RowDefinition Height="1*" />
             <RowDefinition Height="10*" />
             <RowDefinition Height="1*" />
-           </Grid.RowDefinitions>
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*" />
             <ColumnDefinition Width="2*" />
@@ -20,15 +20,17 @@
         <TextBlock Grid.ColumnSpan="2" Padding="2,2,2,2" Background="BlueViolet" Width="800" Grid.Row="0" TextAlignment="Center" VerticalAlignment="Bottom"   FontSize="30" FontWeight="Bold" Foreground="White"> ZGZ Furniture</TextBlock>
 
         <StackPanel Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="68,31,0,0">
-            <Button Background="blue" Foreground="White" BorderBrush="BlueViolet"  Margin="0,10,0,0" Content="Profile" Click ="btnProfile_Click"  HorizontalAlignment="Center" Height="46" Width="167" FontSize="25"/>
-            <Button Background="blue" Foreground="White" BorderBrush="BlueViolet"  Margin="0,10,0,0"  Content="Customers" Click="btnCustomers_Click" HorizontalAlignment="Center" Height="46" Width="169" FontSize="25"/>
-            <Button Background="blue" Foreground="White" BorderBrush="BlueViolet" Margin="0,10,0,0"  Content="Products" Click="btnProducts_Click" HorizontalAlignment="Center" Height="46" Width="169" FontSize="25"/>
-            <Button Background="blue" Foreground="White" BorderBrush="BlueViolet" Margin="0,10,0,0"  Content="Orders" Click ="btnOrder_Click" HorizontalAlignment="Center" Height="46" Width="172" FontSize="25"/>
-            <Button Background="blue" Foreground="White" BorderBrush="BlueViolet"  Margin="0,10,0,0" Content="Checkout" Click ="btnChecout_Click" HorizontalAlignment="Center" Height="46" Width="176" FontSize="25"/>
+            <Button Background="CadetBlue" Foreground="White" BorderBrush="BlueViolet"  Margin="0,10,0,0" Content="Profile" Click ="btnProfile_Click"  HorizontalAlignment="Center" Height="46" Width="167" FontSize="25"/>
+            <Button Background="CadetBlue" Foreground="White" BorderBrush="BlueViolet"  Margin="0,10,0,0"  Content="Customers" Click="btnCustomers_Click" HorizontalAlignment="Center" Height="46" Width="169" FontSize="25"/>
+            <Button Background="CadetBlue" Foreground="White" BorderBrush="BlueViolet" Margin="0,10,0,0"  Content="Products" Click="btnProducts_Click" HorizontalAlignment="Center" Height="46" Width="169" FontSize="25"/>
+            <Button Background="CadetBlue" Foreground="White" BorderBrush="BlueViolet" Margin="0,10,0,0"  Content="Orders" Click ="btnOrder_Click" HorizontalAlignment="Center" Height="46" Width="172" FontSize="25"/>
+            <Button Background="CadetBlue" Foreground="White" BorderBrush="BlueViolet"  Margin="0,10,0,0" Content="Checkout" Click ="btnChecout_Click" HorizontalAlignment="Center" Height="46" Width="176" FontSize="25"/>
         </StackPanel>
         <StackPanel Background="AntiqueWhite" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock Padding="10,10,10,10" Width="350" TextAlignment="Center" TextWrapping="WrapWithOverflow" FontWeight="Bold" Text="Welcome" FontSize="50" />
-            <TextBlock Padding="10,10,10,10" Name="tbxUser" TextWrapping="Wrap" Height="56" Margin="0,50,0,0" Width="350" TextAlignment="Center" FontSize="40"/>
+            <Canvas>
+                <TextBlock Padding="10,10,10,10" Width="350" TextAlignment="Center" TextWrapping="WrapWithOverflow" FontWeight="Bold" Text="Welcome" FontSize="50" Canvas.Left="-192" Canvas.Top="-87" />
+                <TextBlock Padding="10,0,10,10" Name="tbxUser" TextWrapping="Wrap" Height="56" Width="350" TextAlignment="Center" FontSize="40" Canvas.Left="-192" Canvas.Top="43"/>
+            </Canvas>
         </StackPanel>
 
 

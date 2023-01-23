@@ -26,16 +26,18 @@ using DataObject = System.Windows.DataObject;
 using QuestPDF.Fluent;
 using QuestPDF.Helpers;
 using Colors = QuestPDF.Helpers.Colors;
+using static System.Net.Mime.MediaTypeNames;
+using System.Security.Permissions;
 
 namespace WpfApp1
 {
     /// <summary>
     /// Interaction logic for CheckoutWindow.xaml
     /// </summary>
-   
+
     public partial class CheckoutWindow : Window
     {
-        string fileName = "";
+        string fileName;
         List<CheckoutItemList> items = new List<CheckoutItemList>();
         double totalPrice = 0;
         int orderIdForPrint = 0;
@@ -47,73 +49,81 @@ namespace WpfApp1
             LvCheckoutList.ItemsSource = items;
         }
 
+        public bool Export(string text)
+        {
+            try
+            {
+                Document.Create(Container =>
+                {
+                    Container.Page(page =>
+                    {
+                        page.Size(PageSizes.B4);
+                        page.Margin(2, QuestPDF.Infrastructure.Unit.Centimetre);
+
+                        //page.PageColor("#43a047");
+                        page.DefaultTextStyle(x => x.FontSize(20));
+
+                        //string text = "hello world";
+                        page.Header()
+                            .Text("Order details")
+                            .SemiBold().FontSize(36).FontColor(Colors.Amber.Medium);
+                        page.Content()
+ 
+                            .PaddingVertical(1, QuestPDF.Infrastructure.Unit.Centimetre)
+                            .Column(x =>
+                            {
+
+                                x.Spacing(20);
+                                x.Item().Text(text);
+
+                            });
+
+                        page.Footer()
+                            .AlignCenter()
+                            .Text(DateTime.Now.ToShortDateString());
+                    });
+                }).GeneratePdf(fileName + ".pdf");
+                return true;
+            }
+
+            catch (IOException ex)
+            {
+                MessageBox.Show(this, "Failed to export to pdf file" + ex.Message, "Inner error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+
+        }
+
+
         private void btnCheckoutExport_Click(object sender, RoutedEventArgs e)
         {
             // prepare string list
-            List<string> data = new List<string>();
-            
-            data.Add("Custemor Id: " + TbxCustomerId.Text);
 
-            data.Add("Issue date: " + DateTime.Now.ToShortDateString());
-            data.Add("---------------------------------------------------------------------------------");
-            data.Add(String.Format("{0,6} {1,25} {1,25} {1,25} {1,25}\n\n", "Product Id", "Name", "Unitptice", "Quantity", "Price"));
+            string data = "";
+            data += "Custemor Id: " + TbxCustomerId.Text + "\n";
+
+            data += "Issue date: " + DateTime.Now.ToShortDateString() + "\n";
+            data += "---------------------------------------------------------------------------------" + "\n";
+            data += String.Format("{0,-15} {1,-15} {2,-15} {3,-15} {4,-15}\n\n", "Product Id", "Name", "Unitptice", "Quantity", "Price");
+
+            
+            //data += "Product Id" + "     " + "Name" + "           " + "Unitptice" + "      " + "Quantity" + "       " + "Price" + "\n";
             var allItems = GetAllSelectedItems();
             if (allItems == null) return;
             foreach (var item in allItems)
             {
-                data.Add(String.Format("{0,6} {1,25} {1,25} {1,25} {1,25}\n\n", item.ProductId.ToString() + item.ProductName + item.UnitPrice.ToString() +  item.Quantity.ToString()+  item.Price.ToString()));
+                data += String.Format("{0,-20:N0} {1,20} {2,-20:N1} {3,-20:N0} {4,-20:N1}\n\n", item.ProductId, item.ProductName, item.UnitPrice, item.Quantity, item.Price );
             }
-            data.Add("---------------------------------------------------------------------------------");
-            data.Add("Total Price: $" + LbTotalPrice.Content);
-            string text = "";
-            foreach (string d in data)
+            data += "---------------------------------------------------------------------------------" + "\n";
+            data += "Total Price: $" + LbTotalPrice.Content;
+          
+          
+            bool ifExport = Export(data);
+            if (ifExport)
             {
-                text += d + "\n";
+                BtnPrint.IsEnabled = true;
+                MessageBox.Show(this, "Export to " + fileName + ".pdf is successful!", "Success information", MessageBoxButton.OK, MessageBoxImage.Information);
             }
-
-            // save to file
-            try
-            {
-                    Document.Create(Container =>
-                    {
-                        Container.Page(page =>
-                        {
-                            page.Size(PageSizes.B4);
-                            page.Margin(2, QuestPDF.Infrastructure.Unit.Centimetre);
-
-                            //page.PageColor("#43a047");
-                            page.DefaultTextStyle(x => x.FontSize(20));
-
-                            //string text = "hello world";
-                            page.Header()
-                                .Text("Order details")
-                                .SemiBold().FontSize(36).FontColor(Colors.Amber.Medium);
-                            page.Content()
-
-                                .PaddingVertical(1, QuestPDF.Infrastructure.Unit.Centimetre)
-                                .Column(x =>
-                                {
-                                    
-                                    x.Spacing(40);
-                                    x.Item().Text(text);
-                                    
-                                });
-
-                            page.Footer()
-                                .AlignCenter()
-                                .Text(DateTime.Now.ToShortDateString());
-                        });
-                    }).GeneratePdf(fileName + ".pdf");
-                    MessageBox.Show(this, "Export to " + fileName +".pdf is successful!", "Success information", MessageBoxButton.OK, MessageBoxImage.Information);
-                }
-            
-            catch (IOException ex)
-            {
-                MessageBox.Show(this, "Failed to export to pdf file" + ex.Message, "Inner error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-
-
-
         }
 
 
@@ -130,10 +140,6 @@ namespace WpfApp1
         private Product GetCurrentProduct(int productId)
         {
             Product currentProduct = (from p in Globals.dbContext.Products where p.Id == productId select p).FirstOrDefault<Product>();
-            if (currentProduct == null)
-            {
-                throw new SystemException("Failed to read from database");
-            }
             if (currentProduct == null)
             {
                 throw new SystemException("Invalid Product Item");
@@ -157,10 +163,20 @@ namespace WpfApp1
             TbxQuantity.Text = "";
         }
 
+        public bool CheckIfSufficient(Product currentProduct, int quantity)
+        {
+            if (quantity > currentProduct.Quantity)
+            {
 
+                MessageBox.Show(this, "There are only " + currentProduct.Quantity + " " + currentProduct.Name, "Product items insufficient", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return false;
+            }
+            return true;
+        }
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-
+            BtnExport.IsEnabled = false;
+            BtnPrint.IsEnabled = false;
             // get the input data 
             try
             {
@@ -173,7 +189,7 @@ namespace WpfApp1
                 {
                     if (item.ProductId == productId)
                     {
-                        
+
                         item.Quantity += quantity;
                         item.Price = item.UnitPrice * item.Quantity;
                         LvCheckoutList.Items.Refresh();
@@ -183,17 +199,19 @@ namespace WpfApp1
                 }
 
                 // find the current product info
-                Product currentProduct = GetCurrentProduct(productId);
-
-
-                // instantize a checkoutItemList object and add to items
-                CheckoutItemList cItem = new CheckoutItemList(currentProduct.Id, currentProduct.Name, currentProduct.Price, quantity);
-
-                items.Add(cItem);
+               Product currentProduct = GetCurrentProduct(productId);
+  
+               bool ifSufficient = CheckIfSufficient(currentProduct, quantity);
+               
+               if(ifSufficient)
+                {
+                    CheckoutItemList cItem = new CheckoutItemList(currentProduct.Id, currentProduct.Name, currentProduct.Price, quantity);
+                    items.Add(cItem);
 
                 // refresh CheckoutListView
-                LvCheckoutList.Items.Refresh();
-                ResetFields();
+                   LvCheckoutList.Items.Refresh();
+                   ResetFields();
+                }   
             }
             catch (FormatException ex)
             {
@@ -212,10 +230,14 @@ namespace WpfApp1
             // get all listview items
             List<CheckoutItemList> lvItemsList = GetAllSelectedItems();
 
-            // claculate the price)
+            // claculate the price and decrease the quantity in products list
+            Product currentProduct;
             foreach (var item in lvItemsList)
             {
                 totalPrice += item.Price;
+                currentProduct = GetCurrentProduct(item.ProductId);
+                currentProduct.Quantity -= Convert.ToInt32(item.Quantity);
+                Globals.dbContext.SaveChanges();
             }
             LbTotalPrice.Content = totalPrice;
 
@@ -235,18 +257,21 @@ namespace WpfApp1
 
                 }
                 order = new Order(customerId, Globals.userId, totalPrice);
-                orderIdForPrint = order.OrderId;
-                fileName = "Order - " + orderIdForPrint.ToString();  
                 Globals.dbContext.Orders.Add(order);
                 Globals.dbContext.SaveChanges();
+                //Order lastOrder = (from o in Globals.dbContext.Orders where o.CustomerId == customerId && o.UserId == Globals.userId && o.TotalPaied == totalPrice select o).LastOrDefault<Order>();
+                //if (lastOrder == null) return; 
+                orderIdForPrint = order.OrderId;
+                fileName = "Order-" + orderIdForPrint;
                 // save to OrderItems table
-                Product currentProduct;
+                Product curProduct;
                 foreach (var item in lvItemsList)
                 {
-                    currentProduct = GetCurrentProduct(item.ProductId);
-                    OrderItem orderItem = new OrderItem(order.OrderId, item.ProductId, currentProduct.Name, item.Quantity, totalPrice);
+                    curProduct = GetCurrentProduct(item.ProductId);
+                    OrderItem orderItem = new OrderItem(order.OrderId, item.ProductId, item.ProductName, item.Quantity, totalPrice);
                     Globals.dbContext.OrderItems.Add(orderItem);
                     Globals.dbContext.SaveChanges();
+                    BtnExport.IsEnabled = true;
                 }
             }
             catch (FormatException ex)
@@ -277,7 +302,7 @@ namespace WpfApp1
 
                 foreach (CheckoutItemList item in items)
                 {
-                    if(item.ProductId == selectedItem.ProductId)
+                    if (item.ProductId == selectedItem.ProductId)
                     {
                         item.ProductId = productId;
                         item.Quantity = quantity;
@@ -355,21 +380,22 @@ namespace WpfApp1
 
             Type myType = typeof(List<CheckoutItemList>);
 
-            var selectedItems = (List<CheckoutItemList>)LvCheckoutList.SelectedItems;
+            var selectedItems = LvCheckoutList.SelectedItems;
             if (selectedItems == null) return;
             List<string> nameArr = new List<string>();
             string msg = String.Join(",", nameArr);
             var result = MessageBox.Show(this, "Are you sure you want to delete " + msg, "Deletion conformation", MessageBoxButton.OKCancel, MessageBoxImage.Question);
             if (result != MessageBoxResult.OK) return;
             //CheckoutItemList[] sItemsArr = selectedItems.ToArray();
-           
+
             foreach (CheckoutItemList sm in selectedItems)
             {
                 nameArr.Add(sm.ProductName);
-                items.Remove(sm); 
+                items.Remove(sm);
             }
-           
+
             LvCheckoutList.Items.Refresh();
+            ResetFields();
             MessageBox.Show(this, msg + " have been deleted.", "Deletion conformation", MessageBoxButton.OKCancel, MessageBoxImage.Information);
 
         }
@@ -410,7 +436,7 @@ namespace WpfApp1
                 return false;
             }
         }
- 
+
 
         private void BtnPrint_Click(object sender, RoutedEventArgs e)
         {

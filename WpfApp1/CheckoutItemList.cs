@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WpfApp1
 {
-    internal class CheckoutItemList
+    public class CheckoutItemList
     {
         public int ProductId { get; set; }
 

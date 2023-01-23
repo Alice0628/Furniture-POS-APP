@@ -17,14 +17,15 @@ namespace WpfApp1.Tests
         [TestMethod()]
         public void LoginWindowTest()
         {
-            string inputEmail = "john@gmail.com";
-            string password = "123";
-          
+            string email = "john@gmail.com";
+            string pass = "123";
 
-            User user = new User("John Smith", "123", "john@gmail.com");
-            LoginWindow lgWindow = new LoginWindow();
-            lgWindow.BtnSignin_Click(user, inputEmail, password);
-            Assert.Fail();
+
+            WpfApp1.LoginWindow lgWindow = new WpfApp1.LoginWindow();
+            bool isFound = lgWindow.VerifyIdentity(email, pass);
+
+            Assert.IsTrue(isFound);
+
         }
     }
 }
