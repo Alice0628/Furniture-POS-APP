@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp1", "WpfApp1.csproj",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FurnitureMSTest", "..\FurnitureMSTest\FurnitureMSTest.csproj", "{3BE8A742-DE57-4EDC-B23D-D777E88A8597}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp1Tests1", "..\WpfApp1Tests1\WpfApp1Tests1.csproj", "{1751F45F-B944-40CF-862D-9D08941662F0}"
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "FurnitureApp", "..\FurnitureApp\FurnitureApp.vdproj", "{AB758333-68EA-4E6E-8BD4-7595F894FF45}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,8 @@ Global
 		{3BE8A742-DE57-4EDC-B23D-D777E88A8597}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3BE8A742-DE57-4EDC-B23D-D777E88A8597}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3BE8A742-DE57-4EDC-B23D-D777E88A8597}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1751F45F-B944-40CF-862D-9D08941662F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1751F45F-B944-40CF-862D-9D08941662F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1751F45F-B944-40CF-862D-9D08941662F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1751F45F-B944-40CF-862D-9D08941662F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB758333-68EA-4E6E-8BD4-7595F894FF45}.Debug|Any CPU.ActiveCfg = Debug
+		{AB758333-68EA-4E6E-8BD4-7595F894FF45}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
