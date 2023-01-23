@@ -30,39 +30,13 @@ namespace WpfApp1
  
             Globals.dbContext = new FurnitureDbContext();
 
-
             //Product product = new Product("chair", 12.5, 10);
             //Globals.dbContext.Products.Add(product);
             //Product product2 = new Product("table", 60.0, 20);
             //Globals.dbContext.Products.Add(product2);
-           
-
-            //User user = new User("John Smith", "123", "john@gmail.com");
-            //Globals.dbContext.Users.Add(user);
-          
-
-            //Customer customer = new Customer("Smith John", "john@gmail.com", "11234567890");
-            //Globals.dbContext.Customers.Add(customer);
-            //Globals.dbContext.SaveChanges();
-          
-        
-           
-
-
-
-
-            //Customer customer = new Customer("Smith", "john@gmail.com", "11234567890");
-            //Globals.dbContext.Customers.Add(customer);
-
-            //Product product = new Product("chair", 12.5, 10);
-            //Globals.dbContext.Products.Add(product);
-            //Product product2 = new Product("table", 60.0, 20);
-            //Globals.dbContext.Products.Add(product2);
-
-
+    
             //User user = new User("John,Smith", "123", "john@gmail.com");
             //Globals.dbContext.Users.Add(user);
-
 
             //Customer customer = new Customer("Smith,John", "john@gmail.com", "11234567890");
             //Globals.dbContext.Customers.Add(customer);
