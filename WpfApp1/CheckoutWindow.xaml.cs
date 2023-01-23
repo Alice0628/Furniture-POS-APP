@@ -112,7 +112,7 @@ namespace WpfApp1
             if (allItems == null) return;
             foreach (var item in allItems)
             {
-                data += String.Format("{0,-20:N0} {1,20} {2,-20:N1} {3,-20:N0} {4,-20:N1}\n\n", item.ProductId, item.ProductName, item.UnitPrice, item.Quantity, item.Price );
+                data += String.Format("{0,-23:N0} {1,-23} {2,-23:N1} {3,-23:N0} {4,-23:N1}\n\n", item.ProductId, item.ProductName, item.UnitPrice, item.Quantity, item.Price );
             }
             data += "---------------------------------------------------------------------------------" + "\n";
             data += "Total Price: $" + LbTotalPrice.Content;
@@ -268,7 +268,7 @@ namespace WpfApp1
                 foreach (var item in lvItemsList)
                 {
                     curProduct = GetCurrentProduct(item.ProductId);
-                    OrderItem orderItem = new OrderItem(order.OrderId, item.ProductId, item.ProductName, item.Quantity, totalPrice);
+                    OrderItem orderItem = new OrderItem(order.OrderId, item.ProductId, item.ProductName, item.Quantity, item.UnitPrice);
                     Globals.dbContext.OrderItems.Add(orderItem);
                     Globals.dbContext.SaveChanges();
                     BtnExport.IsEnabled = true;

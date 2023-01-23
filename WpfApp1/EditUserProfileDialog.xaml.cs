@@ -34,7 +34,7 @@ namespace WpfApp1
             currentUser.UserName = TbxName.Text;
             currentUser.Email = TbxEmail.Text;
 
-            if (TbxPassword.Text != currentUser.Password)
+            if (TbxPassword.Password != currentUser.Password)
             {
                 MessageBox.Show("Please check your password", "Error", MessageBoxButton.OK, MessageBoxImage.Information);
             }
