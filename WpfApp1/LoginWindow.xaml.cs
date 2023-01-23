@@ -55,32 +55,11 @@ namespace WpfApp1
         {
             // get the input value and do validation
             string email = tbxEmail.Text;
-            string pass = tbxPass.Text;
+            string pass = tbxPass.Password;
 
-            VerifyIdentity("john@gmail.com","123");
-            tbxEmail.Text = "";
-            tbxPass.Text = "";
-
-
-            // look for the mathed user in database
-            User user = (from u in Globals.dbContext.Users where u.Email == email && u.Password == pass select u).FirstOrDefault<User>();
-
-            if (user == null)
-            {
-                MessageBox.Show(this, "Email or password not correct, please try again!", "Indentity verification failed", MessageBoxButton.OK, MessageBoxImage.Information);
-                return;
-            }
-
-            // if found, go to profile window; if no, show messagebox and stay in this page
-
-            Globals.userId = user.UserId;
-            this.Visibility = Visibility.Collapsed;
-            MenuWindow mWin = new MenuWindow(user.UserName);
-            mWin.Owner = this;
-            mWin.ShowDialog();
-
-
-            Visibility = Visibility.Visible;
+            VerifyIdentity(email,pass);
+            
+            this.Visibility = Visibility.Visible;
         }
     }
 }
