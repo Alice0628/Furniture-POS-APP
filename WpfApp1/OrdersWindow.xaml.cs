@@ -27,7 +27,7 @@ namespace WpfApp1
     /// </summary>
     public partial class OrdersWindow : System.Windows.Window
     {
-        string fileName = "D:\\OrdersList.xlsx";
+        string fileName = "C:\\OrdersList.xlsx";
         public OrdersWindow()
         {
             InitializeComponent();
@@ -82,18 +82,14 @@ namespace WpfApp1
                 //InsertData;
                 int ind = 2;
                 foreach (Order order in oList)
-                {
-                    //DataRow DR = DRV.Row;
-                    //for (int ind1 = 0; ind1 < oList.Count; ind1++)
-                    //{
+                {                
                     WS.Cells[1][ind] = order.OrderId;
                     WS.Cells[2][ind] = order.CustomerId;
                     WS.Cells[3][ind] = order.UserId;
                     WS.Cells[4][ind] = order.OrderDate;
                     WS.Cells[5][ind] = order.TotalPaied;
-                    //}
-                    ind++;
-                  
+  
+                    ind++;                  
                 }
 
                 //CloseExcelApp();

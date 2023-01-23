@@ -40,7 +40,7 @@ namespace WpfApp1
         public static bool IsNameValid(string name, out string error)// Name must be 2-50 characters or number long, no special characters 
         {
 
-            if (!Regex.IsMatch(name, @"^[a-zA-Z0-9]{2,50}$"))
+            if (!Regex.IsMatch(name, @"^[a-zA-Z0-9 ]{2,50}$"))
             {
                 error = "Name must be 2-100 characters long, no special characters";
                 return false;
@@ -73,6 +73,21 @@ namespace WpfApp1
             error = null;
             return true;
 
+        }
+
+        public bool AddProduct()
+        {
+            String errName = null;
+            String errPrice= null;
+            String errQuantity= null;
+            if (IsNameValid(Name,out errName) && IsPriceValid(Price.ToString(),out errPrice) && IsQuantityValid(Quantity.ToString(),out errQuantity))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
     }

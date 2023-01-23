@@ -69,8 +69,8 @@ namespace WpfApp1
             try
             {
                 SaveFileDialog saveFileDialog = new SaveFileDialog();
-                //saveFileDialog.InitialDirectory = Directory.GetCurrentDirectory();
-                saveFileDialog.InitialDirectory = @"D:\Full Stack Developer\(Course 14)Application Development I\Project\AppDev1Project\WpfApp1";
+                saveFileDialog.InitialDirectory = Directory.GetCurrentDirectory();
+                //saveFileDialog.InitialDirectory = @"D:\Full Stack Developer\(Course 14)Application Development I\Project\AppDev1Project\WpfApp1";
                 saveFileDialog.Filter = "Text file (*.txt)|*.txt|Data file (*.data)|*.data|All Files| *.* ";//*.*, *.txt, *.data
 
                 if (saveFileDialog.ShowDialog() == true)
