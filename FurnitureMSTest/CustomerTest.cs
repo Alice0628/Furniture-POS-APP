@@ -3,7 +3,7 @@ using WpfApp1;
 namespace FurnitureMSTest
 {
     [TestClass]
-    public class UnitTest1
+    public class CustomerTest
     {
 
         // Customer Test

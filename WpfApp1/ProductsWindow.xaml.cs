@@ -230,7 +230,7 @@ namespace WpfApp1
                 System.Drawing.Image image = ByteArrayToImage(currSelProduct.Image);
                 Random random = new Random();
 
-                filename = "d:\\test" + random.Next(1000) + ".png";
+                filename = Directory.GetCurrentDirectory() + "test" + random.Next(1000) + ".png";
                 image.Save(filename, System.Drawing.Imaging.ImageFormat.Png);
 
                 ImageSourceConverter imgs = new ImageSourceConverter();
@@ -262,9 +262,7 @@ namespace WpfApp1
             using (var ms = new MemoryStream())
             {
                 imageIn.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
-
                 return ms.ToArray();
-
             }
         }
 

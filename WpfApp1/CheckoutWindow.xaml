@@ -14,20 +14,20 @@
     </Window.Resources>
 
     <Grid>
-        <Label Background="AntiqueWhite" Content="CustomerId" HorizontalAlignment="Left" Height="36" Margin="547,66,0,0" VerticalAlignment="Top" Width="136" FontSize="20" FontWeight="Bold"/>
+        <Label Background="AntiqueWhite" Content="CustomerId" HorizontalAlignment="Left" Height="36" Margin="556,66,0,0" VerticalAlignment="Top" Width="211" FontSize="20" FontWeight="Bold"/>
         <Label Content="create an account" MouseUp="lb_mouseUp" Foreground="blue" HorizontalAlignment="Left" Height="28" Margin="669,132,0,0" VerticalAlignment="Top" Width="106" RenderTransformOrigin="0.529,-1.249"/>
         <TextBox Name ="TbxCustomerId" HorizontalAlignment="Left" Margin="556,102,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211" Height="38" FontSize="20"/>
-        <Label Background="AntiqueWhite" Content="Product Code" HorizontalAlignment="Left" Height="36" Margin="547,150,0,0" VerticalAlignment="Top" Width="136" FontSize="20" FontWeight="Bold"/>
+        <Label Background="AntiqueWhite" Content="Product Code" HorizontalAlignment="Left" Height="36" Margin="556,150,0,0" VerticalAlignment="Top" Width="211" FontSize="20" FontWeight="Bold"/>
         <TextBox Name ="TbxProductId" HorizontalAlignment="Left" Margin="556,186,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211" Height="38" FontSize="20"/>
-        <Label Background="AntiqueWhite" Content="Product Quantity" HorizontalAlignment="Left" Height="36" Margin="547,229,0,0" VerticalAlignment="Top" Width="215" FontSize="20" FontWeight="Bold"/>
+        <Label Background="AntiqueWhite" Content="Product Quantity" HorizontalAlignment="Left" Height="36" Margin="556,229,0,0" VerticalAlignment="Top" Width="211" FontSize="20" FontWeight="Bold"/>
         <TextBox Name ="TbxQuantity"  HorizontalAlignment="Left" Margin="556,263,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211" Height="39" FontSize="20"/>
         <Button Content="Add" Background="CadetBlue" Foreground="White"  Click="btnAdd_Click" HorizontalAlignment="Left" Margin="556,322,0,0" VerticalAlignment="Top" Height="31" Width="53" FontSize="20"/>
         <Button Content="Done" Background="CadetBlue" Foreground="White" Click="BtnDone_Click" HorizontalAlignment="Left" Margin="705,322,0,0" VerticalAlignment="Top" Height="31" Width="62" FontSize="20"/>
         <Button Content="Modify" Background="CadetBlue" Foreground="White" Click="btnModify_Click" HorizontalAlignment="Left" Margin="618,322,0,0" VerticalAlignment="Top" Height="31" Width="81" FontSize="20" RenderTransformOrigin="2.339,0.468"/>
 
-        <Button Content="Export to pdf" HorizontalAlignment="Left" Margin="27,47,0,0" VerticalAlignment="Top" Height="31" Width="127" Click="btnCheckoutExport_Click" FontSize="15"/>
+        <Button Name="BtnExport" IsEnabled="False" Content="Export to pdf" HorizontalAlignment="Left" Margin="27,33,0,0" VerticalAlignment="Top" Height="31" Width="127" Click="btnCheckoutExport_Click" FontSize="15"/>
 
-        <ListView Name="LvCheckoutList" Margin="23,78,263,81" SelectionChanged="LvOnChanged_Click" SelectionMode="Extended" RenderTransformOrigin="0.479,0.741">
+        <ListView Name="LvCheckoutList" Margin="23,66,263,72" SelectionChanged="LvOnChanged_Click" SelectionMode="Extended" RenderTransformOrigin="0.479,0.741">
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <EventSetter Event="MouseMove" Handler="lstItems_MouseMove" />
@@ -52,8 +52,8 @@
 
         <Label Name="LbTotalPrice" HorizontalAlignment="Left" Height="36" Margin="469,357,0,0" VerticalAlignment="Top" Width="70" FontSize="20" FontWeight="Bold" RenderTransformOrigin="0.529,-1.249"/>
         <Button AllowDrop="True" Drop="BtnDelete_Drop" Content="Trash" HorizontalAlignment="Left" Margin="23,362,0,0" VerticalAlignment="Top" Width="70" FontSize="20" RenderTransformOrigin="0.623,1.813"/>
-        <Button Content="Print" Click="BtnPrint_Click" HorizontalAlignment="Left" Margin="176,47,0,0" VerticalAlignment="Top" Height="31" Width="62" FontSize="15"/>
-       
+        <Button Name ="BtnPrint" IsEnabled="False" Content="Print" Click="BtnPrint_Click" HorizontalAlignment="Left" Margin="176,33,0,0" VerticalAlignment="Top" Height="31" Width="62" FontSize="15" RenderTransformOrigin="0.747,-0.454"/>
+
 
 
 

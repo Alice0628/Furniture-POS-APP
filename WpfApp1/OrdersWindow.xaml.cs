@@ -27,7 +27,7 @@ namespace WpfApp1
     /// </summary>
     public partial class OrdersWindow : System.Windows.Window
     {
-        string fileName = "C:\\OrdersList.xlsx";
+        string fileName = Directory.GetCurrentDirectory() + "\\OrdersList.xlsx";
         public OrdersWindow()
         {
             InitializeComponent();

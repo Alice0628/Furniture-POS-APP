@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d" ResizeMode="NoResize" WindowStartupLocation="CenterScreen"
         Title="WelcomeWindow" Height="450" Width="800">
-<Grid>
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*" />
             <RowDefinition Height="10*" />
@@ -22,8 +22,12 @@
         <TextBlock Grid.ColumnSpan="4" Padding="2,2,2,2" Background="BlueViolet" Width="800" Grid.Row="0" TextAlignment="Center" VerticalAlignment="Bottom"   FontSize="30" FontWeight="Bold" Foreground="White"> ZGZ Furniture</TextBlock>
 
         <StackPanel  Grid.Row="1" Grid.ColumnSpan="4" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock Background="AntiqueWhite" TextAlignment="Center" Width="500" Padding="5,5,5,5"  TextWrapping="WrapWithOverflow" FontWeight="Bold" Text="Welcome to ZGZ Furniture store Management Application!" FontSize="25" />
-            <Button Margin="0 50 0 0" Content="Login" Foreground="White" FontSize="20" BorderBrush="BlueViolet" Background ="Blue" Click="BtnToLogin_Click" Width="100" />
+            <Canvas>
+                <TextBlock Background="AntiqueWhite" TextAlignment="Center" Width="500" Padding="5,5,5,5"  TextWrapping="WrapWithOverflow" FontWeight="Bold" Text="Welcome to ZGZ Furniture store Management Application!" FontSize="25" Canvas.Left="-243" Canvas.Top="-120" />
+                <Button Content="Login" Foreground="White" FontSize="20" BorderBrush="BlueViolet" Background ="CadetBlue" Click="BtnToLogin_Click" Width="100" Canvas.Left="-64" Canvas.Top="10" />
+            </Canvas>
+
+
         </StackPanel>
 
 
