@@ -7,9 +7,9 @@ namespace FurnitureMSTest
     {
 
         // Customer Test
-        //[TestMethod]
-        //public void AddCustomer()
-        //{
+        [TestMethod]
+        public void AddCustomer()
+        {
             /* ---------  1. Right Input w/ No Address -------- */
             //Customer c1 = new Customer();
             //c1.FullName = "John Smith";
@@ -43,38 +43,16 @@ namespace FurnitureMSTest
             //Assert.AreEqual(true, c4.AddCustomer());
 
             /* ----- 5. Wrong Input w/ wrong FullAddress(NOT 5 fields) ----- */
-            //Customer c5 = new Customer();
-            //c5.FullName = "John Smith";
-            //c5.Email = "J1@gmail.com";
-            //c5.Phone = "12223334444";
-            //c5.FullAddress = "AA,AA,AA,AA";
-            //Assert.AreEqual(true, c5.AddCustomer());
+            Customer c5 = new Customer();
+            c5.FullName = "John Smith";
+            c5.Email = "J1@gmail.com";
+            c5.Phone = "12223334444";
+            c5.FullAddress = "AA,AA,AA,AA";
+            Assert.AreEqual(true, c5.AddCustomer());
 
 
-            //}
-
-            [TestMethod]
-        public void AddProduct()
-        {
-            /* ----- 1. Wrong Input w/ wrong Name(NOT be 2-100 characters long) ----- */
-            Product p1 = new Product();
-            p1.Name = "S";
-            p1.Quantity = 1;
-            p1.Price = 1205;
-            Assert.AreEqual(true, p1.AddProduct());
-
-            /* ----- 2. Wrong Input w/ wrong Price(NOT double) ----- */
-            //Product p2 = new Product();
-            //p2.Name = "Sofa";
-            //p2.Quantity = 1;
-            //p2.Price = double.Parse("A2");
-            //Assert.AreEqual(true, p2.AddProduct());
-            /* ----- 3. Wrong Input w/ wrong Quantity(NOT integer) ----- */
-            //Product p3 = new Product();
-            //p3.Name = "Sofa";
-            //p3.Quantity = int.Parse("A1");
-            //p3.Price = 1205;
-            //Assert.AreEqual(true, p3.AddProduct());
         }
+
+
     }
 }
